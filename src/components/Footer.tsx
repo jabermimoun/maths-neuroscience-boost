@@ -9,14 +9,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <img 
-                src="/lovable-uploads/379ec88c-bb84-449c-b3b1-007274feeb33.png" 
-                alt="Maths Réussite Academy Logo" 
-                className="h-12 mr-3"
-              />
+              <div className="h-16 w-16 relative mr-3">
+                <img 
+                  src="/lovable-uploads/379ec88c-bb84-449c-b3b1-007274feeb33.png" 
+                  alt="Maths Réussite Academy Logo" 
+                  className="h-full w-full object-contain"
+                />
+              </div>
               <div className="flex flex-col">
-                <h3 className="text-xl font-bold text-[#C4A86D]">Maths Réussite Academy</h3>
-                <span className="text-xs text-[#C4A86D]/80 tracking-wider">
+                <h3 className="text-xl font-playfair font-bold text-gold">Maths Réussite Academy</h3>
+                <span className="text-xs text-gold/80 tracking-wider">
                   APPRENDRE. COMPRENDRE. RÉUSSIR
                 </span>
               </div>
@@ -25,13 +27,13 @@ const Footer = () => {
               Une approche unique basée sur les neurosciences pour des résultats rapides et durables.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white/70 hover:text-[#C4A86D] transition-colors">
+              <a href="#" className="text-white/70 hover:text-gold transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-white/70 hover:text-[#C4A86D] transition-colors">
+              <a href="#" className="text-white/70 hover:text-gold transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-white/70 hover:text-[#C4A86D] transition-colors">
+              <a href="#" className="text-white/70 hover:text-gold transition-colors">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -41,15 +43,15 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-center">
-                <Phone size={18} className="mr-2 text-[#C4A86D]" />
+                <Phone size={18} className="mr-2 text-gold" />
                 <span>01 23 45 67 89</span>
               </li>
               <li className="flex items-center">
-                <Mail size={18} className="mr-2 text-[#C4A86D]" />
+                <Mail size={18} className="mr-2 text-gold" />
                 <span>contact@mathsreussite.academy</span>
               </li>
               <li className="flex items-start">
-                <MapPin size={18} className="mr-2 mt-1 text-[#C4A86D]" />
+                <MapPin size={18} className="mr-2 mt-1 text-gold" />
                 <span>Paris et région parisienne</span>
               </li>
             </ul>
