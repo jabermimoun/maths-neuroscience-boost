@@ -35,7 +35,7 @@ const Navbar = () => {
                 <span className="text-gold">MATHS RÉUSSITE</span> <span className="text-gold">ACADEMY</span>
               </span>
               <span className="text-xs text-gold/80 tracking-wider">
-                APPRENDRE. COMPRENDRE. RÉUSSIR
+                APPRENDRE, COMPRENDRE, RÉUSSIR
               </span>
             </div>
           </a>

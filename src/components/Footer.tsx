@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
@@ -19,7 +18,7 @@ const Footer = () => {
               <div className="flex flex-col">
                 <h3 className="text-xl font-playfair font-bold text-gold">Maths Réussite Academy</h3>
                 <span className="text-xs text-gold/80 tracking-wider">
-                  APPRENDRE. COMPRENDRE. RÉUSSIR
+                  APPRENDRE, COMPRENDRE, RÉUSSIR
                 </span>
               </div>
             </div>
