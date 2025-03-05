@@ -68,6 +68,7 @@ export default {
 				"pale-blue": "#F0F8FF",
 				"soft-blue": "#F8FAFC",
 				"vibrant-orange": "#FF7F50",
+				"gold": "#C4A86D",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -116,6 +117,7 @@ export default {
 			fontFamily: {
 				'sans': ['Inter', 'system-ui', 'sans-serif'],
 				'display': ['Manrope', 'system-ui', 'sans-serif'],
+				'playfair': ['Playfair Display', 'serif'],
 			},
 		}
 	},

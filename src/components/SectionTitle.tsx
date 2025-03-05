@@ -33,7 +33,8 @@ const SectionTitle = ({
         <p className={cn(
           'text-lg opacity-80 max-w-3xl',
           center && 'mx-auto',
-          light && 'text-white/80'
+          light && 'text-white/80',
+          !light && 'text-[#C4A86D]'
         )}>
           {subtitle}
         </p>

@@ -14,7 +14,7 @@ const Header = () => {
               Boostez votre réussite en Maths avec une méthode unique !
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              Méthode basée sur les neurosciences pour des résultats rapides et durables.
+              <span className="text-[#C4A86D] font-semibold">APPRENDRE. COMPRENDRE. RÉUSSIR</span> avec une méthode basée sur les neurosciences.
             </p>
             <p className="text-lg text-white/80 mb-8">
               Les mathématiques ne sont pas une fatalité ! Grâce à une méthode basée sur les neurosciences, votre enfant peut progresser rapidement et durablement.

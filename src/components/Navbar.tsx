@@ -22,8 +22,22 @@ const Navbar = () => {
     }`}>
       <div className="container px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <a href="#" className="text-white font-display font-bold text-xl">
-            Math<span className="text-vibrant-orange">Boost</span>
+          <a href="#" className="flex items-center">
+            <div className="h-10 w-10 relative mr-2">
+              <img 
+                src="/lovable-uploads/379ec88c-bb84-449c-b3b1-007274feeb33.png" 
+                alt="Maths Réussite Academy Logo" 
+                className="h-full object-contain"
+              />
+            </div>
+            <div className="flex flex-col text-white">
+              <span className="font-display font-bold text-xl">
+                <span className="text-[#C4A86D]">MATHS RÉUSSITE</span> <span className="text-[#C4A86D]">ACADEMY</span>
+              </span>
+              <span className="text-xs text-[#C4A86D]/80 tracking-wider">
+                APPRENDRE. COMPRENDRE. RÉUSSIR
+              </span>
+            </div>
           </a>
           
           <div className="hidden md:flex items-center space-x-8">
