@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import ButtonCTA from './ButtonCTA';
 import { Phone, Menu, X } from 'lucide-react';
@@ -56,7 +55,7 @@ const Navbar = () => {
             <a href="#blog" className="text-white/90 hover:text-white transition-colors hover-underline">
               Blog
             </a>
-            <ButtonCTA variant="orange" size="sm" icon={<Phone size={16} />}>
+            <ButtonCTA variant="gold" size="sm" icon={<Phone size={16} />}>
               Réserver
             </ButtonCTA>
           </div>
@@ -110,7 +109,7 @@ const Navbar = () => {
           >
             Blog
           </a>
-          <ButtonCTA variant="orange" icon={<Phone size={16} />} className="mt-4" onClick={() => setIsMenuOpen(false)}>
+          <ButtonCTA variant="gold" icon={<Phone size={16} />} className="mt-4" onClick={() => setIsMenuOpen(false)}>
             Réserver
           </ButtonCTA>
         </div>

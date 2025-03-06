@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
@@ -68,7 +67,7 @@ const Testimonials = () => {
         
         <div className="mt-12 flex justify-center">
           <ButtonCTA 
-            variant="orange"
+            variant="gold"
             icon={<MessageSquare size={18} />}
           >
             Lire tous les avis

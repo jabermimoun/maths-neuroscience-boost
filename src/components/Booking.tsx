@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
@@ -58,7 +57,7 @@ const Booking = () => {
           
           <div className="flex justify-center">
             <ButtonCTA 
-              variant="orange" 
+              variant="gold" 
               size="lg" 
               icon={<Phone size={20} />}
               className="animate-pulse-subtle"
@@ -77,7 +76,7 @@ const Booking = () => {
             </div>
             
             <div className="flex justify-center">
-              <ButtonCTA variant="orange" size="lg">
+              <ButtonCTA variant="gold" size="lg">
                 Réserver mon premier cours
               </ButtonCTA>
             </div>

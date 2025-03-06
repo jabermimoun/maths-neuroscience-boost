@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import { ChevronDown, ChevronUp } from 'lucide-react';
@@ -147,7 +146,7 @@ const FAQ = () => {
                   ></textarea>
                 </div>
                 
-                <ButtonCTA variant="orange" className="w-full">
+                <ButtonCTA variant="gold" className="w-full">
                   Envoyer ma demande
                 </ButtonCTA>
               </form>

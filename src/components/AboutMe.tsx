@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
@@ -48,7 +47,7 @@ const AboutMe = () => {
               </div>
               
               <div className="pt-6">
-                <ButtonCTA variant="blue">
+                <ButtonCTA variant="dark">
                   Découvrir comment ça marche
                 </ButtonCTA>
               </div>

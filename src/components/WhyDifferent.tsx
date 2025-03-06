@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Brain, Target, Rocket } from 'lucide-react';
 import SectionTitle from './SectionTitle';
@@ -78,7 +77,7 @@ const WhyDifferent = () => {
         
         <div className="mt-12 text-center">
           <ButtonCTA 
-            variant="orange" 
+            variant="gold" 
             size="lg" 
             icon={<Phone size={20} />}
           >

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
@@ -114,7 +113,7 @@ const Method = () => {
         
         <div className="text-center">
           <ButtonCTA 
-            variant="orange" 
+            variant="gold" 
             size="lg" 
             icon={<Phone size={20} />}
           >

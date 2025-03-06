@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
@@ -78,7 +77,7 @@ const Pricing = () => {
                   <span>Support entre les cours</span>
                 </li>
               </ul>
-              <ButtonCTA variant="blue" className="w-full">
+              <ButtonCTA variant="dark" className="w-full">
                 Réserver
               </ButtonCTA>
             </div>
@@ -114,7 +113,7 @@ const Pricing = () => {
                   <span>Bilan détaillé</span>
                 </li>
               </ul>
-              <ButtonCTA variant="orange" className="w-full">
+              <ButtonCTA variant="gold" className="w-full">
                 Réserver
               </ButtonCTA>
             </div>
@@ -144,7 +143,7 @@ const Pricing = () => {
                   <span>Sans engagement</span>
                 </li>
               </ul>
-              <ButtonCTA variant="blue" className="w-full">
+              <ButtonCTA variant="dark" className="w-full">
                 Réserver
               </ButtonCTA>
             </div>
@@ -155,7 +154,7 @@ const Pricing = () => {
           <p className="text-dark-blue mb-6">
             Tous les cours se déroulent à domicile pour un confort optimal.
           </p>
-          <ButtonCTA variant="orange" size="lg">
+          <ButtonCTA variant="gold" size="lg">
             Je veux réserver mon premier cours
           </ButtonCTA>
         </div>
