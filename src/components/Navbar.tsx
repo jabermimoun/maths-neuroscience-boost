@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ButtonCTA from './ButtonCTA';
 import { Phone, Menu, X } from 'lucide-react';
 
@@ -52,12 +54,17 @@ const Navbar = () => {
             <a href="#temoignages" className="text-white/90 hover:text-white transition-colors hover-underline">
               Témoignages
             </a>
-            <a href="#blog" className="text-white/90 hover:text-white transition-colors hover-underline">
+            <Link to="/blog" className="text-white/90 hover:text-white transition-colors hover-underline">
               Blog
+            </Link>
+            <a href="#contact" className="text-white/90 hover:text-white transition-colors hover-underline">
+              Contact
             </a>
-            <ButtonCTA variant="gold" size="sm" icon={<Phone size={16} />}>
-              Réserver
-            </ButtonCTA>
+            <Link to="/reserver">
+              <ButtonCTA variant="gold" size="sm" icon={<Phone size={16} />}>
+                Réserver
+              </ButtonCTA>
+            </Link>
           </div>
           
           <button 
@@ -102,16 +109,25 @@ const Navbar = () => {
           >
             Témoignages
           </a>
-          <a 
-            href="#blog" 
+          <Link 
+            to="/blog" 
             className="text-white/90 hover:text-white transition-colors py-2 border-b border-white/10"
             onClick={() => setIsMenuOpen(false)}
           >
             Blog
+          </Link>
+          <a 
+            href="#contact" 
+            className="text-white/90 hover:text-white transition-colors py-2 border-b border-white/10"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact
           </a>
-          <ButtonCTA variant="gold" icon={<Phone size={16} />} className="mt-4" onClick={() => setIsMenuOpen(false)}>
-            Réserver
-          </ButtonCTA>
+          <Link to="/reserver">
+            <ButtonCTA variant="gold" icon={<Phone size={16} />} className="mt-4" onClick={() => setIsMenuOpen(false)}>
+              Réserver
+            </ButtonCTA>
+          </Link>
         </div>
       </div>
     </nav>

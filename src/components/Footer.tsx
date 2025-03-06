@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-dark-blue text-white py-12">
+    <footer className="bg-dark-blue text-white py-12" id="contact">
       <div className="container px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
