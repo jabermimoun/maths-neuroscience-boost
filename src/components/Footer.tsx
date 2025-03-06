@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-anthracite text-white py-12">
+    <footer className="bg-dark-blue text-white py-12">
       <div className="container px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -23,7 +22,7 @@ const Footer = () => {
                 </span>
               </div>
             </div>
-            <p className="text-white/70 mb-4 font-lora">
+            <p className="text-white/70 mb-4">
               Une approche unique basée sur les neurosciences pour des résultats rapides et durables.
             </p>
             <div className="flex space-x-4">

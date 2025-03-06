@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface ButtonCTAProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  variant?: 'default' | 'gold' | 'dark';
+  variant?: 'default' | 'orange' | 'blue';
   size?: 'default' | 'lg' | 'sm';
   icon?: React.ReactNode;
 }
@@ -22,8 +22,8 @@ const ButtonCTA = ({
     <Button 
       className={cn(
         'font-medium rounded-full transition-all duration-300 shadow-md hover:shadow-lg',
-        variant === 'gold' && 'bg-gold hover:bg-gold-light text-black gradient-button animate-subtle-glow',
-        variant === 'dark' && 'bg-anthracite hover:bg-black text-white',
+        variant === 'orange' && 'bg-vibrant-orange hover:bg-vibrant-orange/90 text-white gradient-button',
+        variant === 'blue' && 'bg-dark-blue hover:bg-dark-blue/90 text-white',
         size === 'lg' && 'text-lg py-6 px-8 h-auto',
         size === 'sm' && 'text-sm py-2',
         className
