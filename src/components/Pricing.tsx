@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
 import { Check, Clock } from 'lucide-react';
@@ -77,9 +78,11 @@ const Pricing = () => {
                   <span>Support entre les cours</span>
                 </li>
               </ul>
-              <ButtonCTA variant="dark" className="w-full">
-                Réserver
-              </ButtonCTA>
+              <Link to="/reserver?plan=mensuel">
+                <ButtonCTA variant="dark" className="w-full">
+                  Réserver
+                </ButtonCTA>
+              </Link>
             </div>
           </div>
           
@@ -113,9 +116,11 @@ const Pricing = () => {
                   <span>Bilan détaillé</span>
                 </li>
               </ul>
-              <ButtonCTA variant="gold" className="w-full">
-                Réserver
-              </ButtonCTA>
+              <Link to="/reserver?plan=intensif">
+                <ButtonCTA variant="gold" className="w-full">
+                  Réserver
+                </ButtonCTA>
+              </Link>
             </div>
           </div>
           
@@ -143,9 +148,11 @@ const Pricing = () => {
                   <span>Sans engagement</span>
                 </li>
               </ul>
-              <ButtonCTA variant="dark" className="w-full">
-                Réserver
-              </ButtonCTA>
+              <Link to="/reserver?plan=unitaire">
+                <ButtonCTA variant="dark" className="w-full">
+                  Réserver
+                </ButtonCTA>
+              </Link>
             </div>
           </div>
         </div>
@@ -154,9 +161,11 @@ const Pricing = () => {
           <p className="text-dark-blue mb-6">
             Tous les cours se déroulent à domicile pour un confort optimal.
           </p>
-          <ButtonCTA variant="gold" size="lg">
-            Je veux réserver mon premier cours
-          </ButtonCTA>
+          <Link to="/reserver">
+            <ButtonCTA variant="gold" size="lg">
+              Je veux réserver mon premier cours
+            </ButtonCTA>
+          </Link>
         </div>
       </div>
     </section>

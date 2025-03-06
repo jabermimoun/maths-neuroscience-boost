@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
 import { Calendar, Phone, Rocket } from 'lucide-react';
@@ -56,14 +57,16 @@ const Booking = () => {
           </div>
           
           <div className="flex justify-center">
-            <ButtonCTA 
-              variant="gold" 
-              size="lg" 
-              icon={<Phone size={20} />}
-              className="animate-pulse-subtle"
-            >
-              Réserver un appel découverte
-            </ButtonCTA>
+            <Link to="/reserver">
+              <ButtonCTA 
+                variant="gold" 
+                size="lg" 
+                icon={<Phone size={20} />}
+                className="animate-pulse-subtle"
+              >
+                Réserver un appel découverte
+              </ButtonCTA>
+            </Link>
           </div>
           
           <div className="mt-16 bg-dark-blue text-white p-8 rounded-lg shadow-lg">
@@ -76,9 +79,11 @@ const Booking = () => {
             </div>
             
             <div className="flex justify-center">
-              <ButtonCTA variant="gold" size="lg">
-                Réserver mon premier cours
-              </ButtonCTA>
+              <Link to="/reserver">
+                <ButtonCTA variant="gold" size="lg">
+                  Réserver mon premier cours
+                </ButtonCTA>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
 import { Star, MessageSquare } from 'lucide-react';
@@ -66,12 +67,14 @@ const Testimonials = () => {
         </div>
         
         <div className="mt-12 flex justify-center">
-          <ButtonCTA 
-            variant="gold"
-            icon={<MessageSquare size={18} />}
-          >
-            Lire tous les avis
-          </ButtonCTA>
+          <Link to="/temoignages">
+            <ButtonCTA 
+              variant="gold"
+              icon={<MessageSquare size={18} />}
+            >
+              Lire tous les avis
+            </ButtonCTA>
+          </Link>
         </div>
         
         <div className="mt-12 p-6 bg-white rounded-lg shadow-md text-center">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ButtonCTA from './ButtonCTA';
 import { Phone } from 'lucide-react';
 
@@ -18,14 +19,16 @@ const Header = () => {
             <p className="text-lg text-white/80 mb-8">
               Les mathématiques ne sont pas une fatalité ! Grâce à une méthode basée sur les neurosciences, votre enfant peut progresser rapidement et durablement.
             </p>
-            <ButtonCTA 
-              variant="gold" 
-              size="lg" 
-              icon={<Phone size={20} />}
-              className="transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3)]"
-            >
-              Réservez un appel gratuit
-            </ButtonCTA>
+            <Link to="/reserver">
+              <ButtonCTA 
+                variant="gold" 
+                size="lg" 
+                icon={<Phone size={20} />}
+                className="transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3)]"
+              >
+                Réservez un appel gratuit
+              </ButtonCTA>
+            </Link>
           </div>
           
           <div className="relative animate-fade-in-right">

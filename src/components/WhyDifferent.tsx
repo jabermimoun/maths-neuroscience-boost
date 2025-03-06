@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Brain, Target, Rocket } from 'lucide-react';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
@@ -76,13 +78,15 @@ const WhyDifferent = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <ButtonCTA 
-            variant="gold" 
-            size="lg" 
-            icon={<Phone size={20} />}
-          >
-            Je veux tester cette méthode !
-          </ButtonCTA>
+          <Link to="/reserver">
+            <ButtonCTA 
+              variant="gold" 
+              size="lg" 
+              icon={<Phone size={20} />}
+            >
+              Je veux tester cette méthode !
+            </ButtonCTA>
+          </Link>
         </div>
       </div>
     </section>
