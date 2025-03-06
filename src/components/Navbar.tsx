@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'py-3 bg-dark-blue/95 shadow-md backdrop-blur-header' : 'py-5 bg-transparent'
+      isScrolled ? 'py-3 bg-anthracite/95 shadow-md backdrop-blur-header' : 'py-5 bg-transparent'
     }`}>
       <div className="container px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -56,7 +56,7 @@ const Navbar = () => {
             <a href="#blog" className="text-white/90 hover:text-white transition-colors hover-underline">
               Blog
             </a>
-            <ButtonCTA variant="orange" size="sm" icon={<Phone size={16} />}>
+            <ButtonCTA variant="gold" size="sm" icon={<Phone size={16} />}>
               Réserver
             </ButtonCTA>
           </div>
@@ -71,7 +71,7 @@ const Navbar = () => {
       </div>
       
       {/* Mobile menu */}
-      <div className={`md:hidden bg-dark-blue absolute w-full transition-all duration-300 ease-in-out ${
+      <div className={`md:hidden bg-anthracite absolute w-full transition-all duration-300 ease-in-out ${
         isMenuOpen ? 'max-h-screen opacity-100 py-4' : 'max-h-0 opacity-0 overflow-hidden'
       }`}>
         <div className="container px-6 flex flex-col space-y-4">
@@ -110,7 +110,7 @@ const Navbar = () => {
           >
             Blog
           </a>
-          <ButtonCTA variant="orange" icon={<Phone size={16} />} className="mt-4" onClick={() => setIsMenuOpen(false)}>
+          <ButtonCTA variant="gold" icon={<Phone size={16} />} className="mt-4" onClick={() => setIsMenuOpen(false)}>
             Réserver
           </ButtonCTA>
         </div>

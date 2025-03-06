@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -75,11 +75,11 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-off-white text-black font-sans;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
+    @apply font-display tracking-tight text-black;
   }
 }
 
@@ -106,6 +106,14 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
+
+  .gold-gradient {
+    background: linear-gradient(to right, #E6B800, #FFD700);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 10px rgba(230, 184, 0, 0.5);
+  }
 }
 
 /* Custom hover effect for links */
@@ -122,7 +130,7 @@
   height: 2px;
   bottom: -2px;
   left: 0;
-  background-color: currentColor;
+  background-color: #E6B800;
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
 }
@@ -142,7 +150,7 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
 }
 
 .video-overlay:hover::before {
@@ -166,7 +174,7 @@ html {
 
 /* Focus styles */
 *:focus-visible {
-  @apply outline-none ring-2 ring-vibrant-orange ring-offset-2;
+  @apply outline-none ring-2 ring-gold ring-offset-2;
 }
 
 /* Intersection Observer animations */
@@ -184,10 +192,12 @@ html {
 /* custom gradient button */
 .gradient-button {
   background-size: 200% auto;
-  background-image: linear-gradient(to right, #FF7F50 0%, #ff9f7f 50%, #FF7F50 100%);
+  background-image: linear-gradient(to right, #E6B800 0%, #FFD700 50%, #E6B800 100%);
   transition: 0.5s;
+  box-shadow: 0 4px 15px rgba(230, 184, 0, 0.2);
 }
 
 .gradient-button:hover {
   background-position: right center;
+  box-shadow: 0 4px 20px rgba(230, 184, 0, 0.4);
 }
