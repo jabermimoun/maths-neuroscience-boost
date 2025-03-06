@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
 import { ArrowRight } from 'lucide-react';
@@ -40,7 +41,11 @@ const Blog = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {articles.map((article) => (
-            <div key={article.id} className="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+            <Link 
+              to={`/blog/${article.id}`} 
+              key={article.id} 
+              className="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-transform duration-300 hover:scale-105"
+            >
               <div className="aspect-video overflow-hidden">
                 <img 
                   src={article.imageUrl} 
@@ -50,23 +55,23 @@ const Blog = () => {
               </div>
               <div className="p-6">
                 <p className="text-sm text-gray-500 mb-2">{article.date}</p>
-                <h3 className="text-xl font-bold text-dark-blue mb-3 line-clamp-2">
+                <h3 className="text-xl font-bold text-[#000000] mb-3 line-clamp-2">
                   {article.title}
                 </h3>
                 <p className="text-gray-600 mb-4 line-clamp-3">
                   {article.excerpt}
                 </p>
-                <a href="#" className="text-vibrant-orange font-medium hover-underline inline-flex items-center">
+                <span className="text-[#FFD700] font-medium inline-flex items-center">
                   Lire l'article
                   <ArrowRight size={16} className="ml-1" />
-                </a>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         
         <div className="mt-12 text-center">
-          <ButtonCTA variant="orange" icon={<ArrowRight size={18} />}>
+          <ButtonCTA variant="gold" icon={<ArrowRight size={18} />}>
             Voir tous les articles
           </ButtonCTA>
         </div>

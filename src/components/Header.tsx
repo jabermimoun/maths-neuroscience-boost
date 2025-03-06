@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ButtonCTA from './ButtonCTA';
 import { Phone } from 'lucide-react';
@@ -6,7 +5,7 @@ import { Phone } from 'lucide-react';
 const Header = () => {
   return (
     <header className="relative bg-hero-pattern min-h-[85vh] flex items-center py-20">
-      <div className="absolute inset-0 bg-gradient-to-b from-dark-blue/50 to-dark-blue/30 mix-blend-multiply"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1C1C1C]/50 to-[#1C1C1C]/30 mix-blend-multiply"></div>
       <div className="container relative z-10 px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
@@ -14,16 +13,16 @@ const Header = () => {
               Boostez votre réussite en Maths avec une méthode unique !
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              <span className="text-[#C4A86D] font-semibold">APPRENDRE, COMPRENDRE, RÉUSSIR</span> avec une méthode basée sur les neurosciences.
+              <span className="text-[#FFD700] font-semibold">APPRENDRE, COMPRENDRE, RÉUSSIR</span> avec une méthode basée sur les neurosciences.
             </p>
             <p className="text-lg text-white/80 mb-8">
               Les mathématiques ne sont pas une fatalité ! Grâce à une méthode basée sur les neurosciences, votre enfant peut progresser rapidement et durablement.
             </p>
             <ButtonCTA 
-              variant="orange" 
+              variant="gold" 
               size="lg" 
               icon={<Phone size={20} />}
-              className="animate-pulse-subtle"
+              className="transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3)]"
             >
               Réservez un appel gratuit
             </ButtonCTA>
