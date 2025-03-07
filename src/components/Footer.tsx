@@ -1,20 +1,13 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
-
 const Footer = () => {
-  return (
-    <footer className="bg-dark-blue text-white py-12" id="contact">
+  return <footer className="bg-dark-blue text-white py-12" id="contact">
       <div className="container px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center mb-4">
               <div className="h-16 w-16 relative mr-3">
-                <img 
-                  src="/lovable-uploads/379ec88c-bb84-449c-b3b1-007274feeb33.png" 
-                  alt="Maths Réussite Academy Logo" 
-                  className="h-full w-full object-contain"
-                />
+                <img src="/lovable-uploads/379ec88c-bb84-449c-b3b1-007274feeb33.png" alt="Maths Réussite Academy Logo" className="h-full w-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <h3 className="text-xl font-playfair font-bold text-gold">Maths Réussite Academy</h3>
@@ -52,7 +45,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-1 text-gold" />
-                <span>Paris et région parisienne</span>
+                <span>Bruxelles et périphérie</span>
               </li>
             </ul>
           </div>
@@ -103,8 +96,6 @@ const Footer = () => {
           <p>© {new Date().getFullYear()} Maths Réussite Academy. Tous droits réservés.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
