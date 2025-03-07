@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -12,35 +11,37 @@ import { fr } from 'date-fns/locale';
 import { CalendarIcon, ArrowLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
-
 const BookingPage = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [date, setDate] = useState<Date | undefined>(undefined);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation basique
     if (!name || !email || !phone || !date) {
       toast({
         title: "Formulaire incomplet",
         description: "Veuillez remplir tous les champs obligatoires.",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
-    
+
     // Simulation d'envoi de formulaire
     toast({
       title: "Réservation envoyée !",
-      description: `Votre demande pour le ${date ? format(date, 'PPP', { locale: fr }) : ''} a bien été prise en compte. Nous vous contacterons rapidement.`,
+      description: `Votre demande pour le ${date ? format(date, 'PPP', {
+        locale: fr
+      }) : ''} a bien été prise en compte. Nous vous contacterons rapidement.`
     });
-    
+
     // Reset form
     setName('');
     setEmail('');
@@ -48,15 +49,9 @@ const BookingPage = () => {
     setMessage('');
     setDate(undefined);
   };
-
-  return (
-    <div className="min-h-screen bg-[#F5F5F5] py-20">
+  return <div className="min-h-screen bg-[#F5F5F5] py-20">
       <div className="container px-6 lg:px-8">
-        <Button 
-          onClick={() => navigate(-1)}
-          variant="outline"
-          className="mb-8"
-        >
+        <Button onClick={() => navigate(-1)} variant="outline" className="mb-8">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Retour
         </Button>
@@ -74,75 +69,39 @@ const BookingPage = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Nom complet *</Label>
-                <Input 
-                  id="name" 
-                  value={name} 
-                  onChange={(e) => setName(e.target.value)} 
-                  placeholder="Votre nom et prénom"
-                  required
-                />
+                <Input id="name" value={name} onChange={e => setName(e.target.value)} placeholder="Votre nom et prénom" required />
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="email">Email *</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  value={email} 
-                  onChange={(e) => setEmail(e.target.value)} 
-                  placeholder="votre@email.com"
-                  required
-                />
+                <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="votre@email.com" required />
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="phone">Téléphone *</Label>
-                <Input 
-                  id="phone" 
-                  value={phone} 
-                  onChange={(e) => setPhone(e.target.value)} 
-                  placeholder="06 XX XX XX XX"
-                  required
-                />
+                <Input id="phone" value={phone} onChange={e => setPhone(e.target.value)} placeholder="06 XX XX XX XX" required />
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="date">Date souhaitée *</Label>
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-full justify-start text-left font-normal",
-                        !date && "text-muted-foreground"
-                      )}
-                    >
+                    <Button variant="outline" className={cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground")}>
                       <CalendarIcon className="mr-2 h-4 w-4" />
-                      {date ? format(date, 'PPP', { locale: fr }) : <span>Choisir une date</span>}
+                      {date ? format(date, 'PPP', {
+                      locale: fr
+                    }) : <span>Choisir une date</span>}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      initialFocus
-                      locale={fr}
-                      className={cn("p-3 pointer-events-auto")}
-                    />
+                    <Calendar mode="single" selected={date} onSelect={setDate} initialFocus locale={fr} className={cn("p-3 pointer-events-auto")} />
                   </PopoverContent>
                 </Popover>
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="message">Message (facultatif)</Label>
-                <Textarea 
-                  id="message" 
-                  value={message} 
-                  onChange={(e) => setMessage(e.target.value)} 
-                  placeholder="Précisez votre demande..."
-                  rows={4}
-                />
+                <Textarea id="message" value={message} onChange={e => setMessage(e.target.value)} placeholder="Précisez votre demande..." rows={4} />
               </div>
               
               <Button type="submit" className="w-full bg-vibrant-orange hover:bg-vibrant-orange/90 text-white">
@@ -189,7 +148,7 @@ const BookingPage = () => {
                 </div>
                 <div>
                   <h3 className="font-medium text-gold">Où se déroulent les cours ?</h3>
-                  <p>Les cours ont lieu à votre domicile sur Paris et région parisienne.</p>
+                  <p>Les cours ont lieu à votre domicile sur Bruxelles et en périphérie</p>
                 </div>
                 <div>
                   <h3 className="font-medium text-gold">Délai de réponse</h3>
@@ -200,8 +159,6 @@ const BookingPage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default BookingPage;
