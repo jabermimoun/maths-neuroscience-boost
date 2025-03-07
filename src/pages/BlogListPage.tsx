@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -48,14 +47,15 @@ const BlogListPage = () => {
   return (
     <div className="min-h-screen bg-[#F5F5F5] py-20">
       <div className="container px-6 lg:px-8">
-        <Button 
-          onClick={() => navigate(-1)}
-          variant="outline"
-          className="mb-8"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Retour
-        </Button>
+        <Link to="/">
+          <Button 
+            variant="outline"
+            className="mb-8"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Retour à l'accueil
+          </Button>
+        </Link>
 
         <h1 className="text-4xl font-bold text-[#000000] mb-8">
           Blog & Conseils Pratiques
