@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -191,13 +192,19 @@ const BlogPost = () => {
               ))}
             </div>
             
-            <div className="mt-8 pt-6 border-t border-gray-200">
+            <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row sm:justify-between gap-4">
               <Link to="/blog">
                 <ButtonCTA 
                   variant="dark" 
                   icon={<ArrowLeft size={18} />}
                 >
                   Voir tous les articles
+                </ButtonCTA>
+              </Link>
+              
+              <Link to="/">
+                <ButtonCTA variant="gold">
+                  Retour à l'accueil
                 </ButtonCTA>
               </Link>
             </div>

@@ -1,11 +1,10 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const BlogListPage = () => {
-  const navigate = useNavigate();
-  
   const articles = [
     {
       id: 1,
