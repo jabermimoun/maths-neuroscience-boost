@@ -17,13 +17,20 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('faq');
+    element?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'py-3 bg-dark-blue/95 shadow-md backdrop-blur-header' : 'py-5 bg-transparent'
     }`}>
       <div className="container px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <div className="h-14 w-14 relative mr-3">
               <img 
                 src="/lovable-uploads/379ec88c-bb84-449c-b3b1-007274feeb33.png" 
@@ -39,7 +46,7 @@ const Navbar = () => {
                 APPRENDRE, COMPRENDRE, RÉUSSIR
               </span>
             </div>
-          </a>
+          </Link>
           
           <div className="hidden md:flex items-center space-x-8">
             <a href="#pourquoi" className="text-white/90 hover:text-white transition-colors hover-underline">
@@ -57,7 +64,7 @@ const Navbar = () => {
             <Link to="/blog" className="text-white/90 hover:text-white transition-colors hover-underline">
               Blog
             </Link>
-            <a href="#contact" className="text-white/90 hover:text-white transition-colors hover-underline">
+            <a href="#faq" onClick={handleContactClick} className="text-white/90 hover:text-white transition-colors hover-underline">
               Contact
             </a>
             <Link to="/reserver">
@@ -117,9 +124,9 @@ const Navbar = () => {
             Blog
           </Link>
           <a 
-            href="#contact" 
+            href="#faq" 
+            onClick={handleContactClick}
             className="text-white/90 hover:text-white transition-colors py-2 border-b border-white/10"
-            onClick={() => setIsMenuOpen(false)}
           >
             Contact
           </a>

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import { ChevronDown, ChevronUp } from 'lucide-react';
@@ -58,6 +59,10 @@ const FAQ = () => {
     {
       question: "Est-ce que vous proposez un suivi entre les cours ?",
       answer: "Oui, un support est disponible entre les séances pour répondre aux questions urgentes et assurer la continuité de l'apprentissage. Les élèves peuvent envoyer leurs questions par message."
+    },
+    {
+      question: "Pourquoi utiliser les neurosciences en soutien scolaire ?",
+      answer: "Les études montrent que le cerveau apprend mieux avec des techniques spécifiques (rappel actif, répétition espacée, etc.). Notre méthode exploite ces principes pour des progrès 3x plus rapides."
     }
   ];
 
@@ -128,8 +133,7 @@ const FAQ = () => {
                   >
                     <option value="">Sélectionnez un niveau</option>
                     <option value="primaire">Primaire</option>
-                    <option value="college">Collège</option>
-                    <option value="lycee">Lycée</option>
+                    <option value="secondaire">Secondaire</option>
                     <option value="superieur">Études supérieures</option>
                   </select>
                 </div>

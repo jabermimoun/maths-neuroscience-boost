@@ -43,6 +43,30 @@ const WhyDifferent = () => {
               Bonne nouvelle : Il existe une solution efficace, et elle est basée sur la science !
             </p>
           </div>
+
+          <div className="mt-8 bg-white rounded-lg p-6 shadow-md border border-gray-200">
+            <h3 className="text-xl font-bold text-dark-blue mb-4">🔬 Pourquoi notre méthode fonctionne ?</h3>
+            <p className="text-lg mb-4">💡 Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</p>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <span className="text-vibrant-orange font-bold mr-2">✔️</span>
+                <p>Technique de la répétition espacée → Mémorisation longue durée garantie</p>
+              </li>
+              <li className="flex items-start">
+                <span className="text-vibrant-orange font-bold mr-2">✔️</span>
+                <p>Apprentissage actif (active recall) → L'élève retient 80% mieux qu'avec une simple lecture</p>
+              </li>
+              <li className="flex items-start">
+                <span className="text-vibrant-orange font-bold mr-2">✔️</span>
+                <p>Méthodes anti-stress → Boost de la concentration et réduction de l'anxiété avant les examens</p>
+              </li>
+              <li className="flex items-start">
+                <span className="text-vibrant-orange font-bold mr-2">✔️</span>
+                <p>Optimisation du cerveau avec la gestion du sommeil et de la motivation</p>
+              </li>
+            </ul>
+            <p className="text-lg font-bold text-dark-blue mt-4">📢 Votre enfant n'a pas besoin de travailler plus, mais de travailler PLUS INTELLIGEMMENT !</p>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
 import { Brain, Target, TrendingUp } from 'lucide-react';
@@ -112,13 +114,15 @@ const Method = () => {
         </div>
         
         <div className="text-center">
-          <ButtonCTA 
-            variant="gold" 
-            size="lg" 
-            icon={<Phone size={20} />}
-          >
-            Prendre rendez-vous pour un bilan gratuit
-          </ButtonCTA>
+          <Link to="/reserver">
+            <ButtonCTA 
+              variant="gold" 
+              size="lg" 
+              icon={<Phone size={20} />}
+            >
+              Prendre rendez-vous pour un bilan gratuit
+            </ButtonCTA>
+          </Link>
         </div>
       </div>
     </section>
