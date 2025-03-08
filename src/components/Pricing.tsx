@@ -106,7 +106,7 @@ const Pricing = () => {
               Chaque année, 1 élève sur 3 voit ses opportunités d'études supérieures compromises à cause des maths.
             </p>
             <p className="text-center font-bold text-dark-blue mt-2">
-              ⚠️ Places ultra limitées ! : Pour garantir un accompagnement ultra personnalisé, je ne prends que 10 élèves par mois.
+              ⚠️ Places ultra limitées ! : Pour garantir un accompagnement ultra personnalisé, je ne prends que 6 élèves par mois.
             </p>
           </div>
         </div>
@@ -144,15 +144,18 @@ const Pricing = () => {
             </div>
           </div>
           
-          {/* Nouveau pack 8 cours par mois */}
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover">
-            <div className="p-6 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-2xl font-bold text-dark-blue mb-2">Intensif</h3>
+          {/* Pack Intensif 8 cours par mois mis en avant */}
+          <div className="bg-white rounded-lg shadow-xl border-2 border-vibrant-orange relative overflow-hidden card-hover transform scale-105 z-10 md:col-span-2">
+            <div className="absolute -right-12 top-6 bg-vibrant-orange text-white py-1 px-12 rotate-45">
+              Populaire
+            </div>
+            <div className="p-6 border-b border-gray-200 bg-dark-blue text-white">
+              <h3 className="text-2xl font-bold mb-2">Intensif</h3>
               <div className="flex items-baseline">
                 <span className="text-3xl font-bold">900€</span>
-                <span className="text-gray-500 ml-2">/mois</span>
+                <span className="text-white/70 ml-2">/mois</span>
               </div>
-              <p className="text-sm text-gray-500 mt-2">8 cours/mois (2h/séance)</p>
+              <p className="text-sm text-white/70 mt-2">8 cours/mois (2h/séance)</p>
             </div>
             <div className="p-6">
               <ul className="space-y-3 mb-6">
@@ -168,46 +171,15 @@ const Pricing = () => {
                   <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
                   <span>Support illimité</span>
                 </li>
+                <li className="flex items-start">
+                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
+                  <span>Bilan détaillé mensuel</span>
+                </li>
               </ul>
+              <p className="text-center text-dark-blue font-medium mb-4 bg-blue-50 py-2 rounded-md">
+                L'option préférée des parents et élèves pour des résultats rapides !
+              </p>
               <Link to="/reserver?plan=intensif-mensuel">
-                <ButtonCTA variant="dark" className="w-full">
-                  Réserver
-                </ButtonCTA>
-              </Link>
-            </div>
-          </div>
-          
-          <div className="bg-white rounded-lg shadow-xl border-2 border-vibrant-orange relative overflow-hidden card-hover transform scale-105 z-10">
-            <div className="absolute -right-12 top-6 bg-vibrant-orange text-white py-1 px-12 rotate-45">
-              Populaire
-            </div>
-            <div className="p-6 border-b border-gray-200 bg-dark-blue text-white">
-              <h3 className="text-2xl font-bold mb-2">Pack Intensif</h3>
-              <div className="flex items-baseline">
-                <span className="text-3xl font-bold">1350€</span>
-              </div>
-              <p className="text-sm text-white/70 mt-2">12 cours / 3 mois</p>
-            </div>
-            <div className="p-6">
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
-                  <span>Économie de 10%</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
-                  <span>Progrès garantis</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
-                  <span>Support premium 7j/7</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
-                  <span>Bilan détaillé</span>
-                </li>
-              </ul>
-              <Link to="/reserver?plan=intensif">
                 <ButtonCTA variant="gold" className="w-full">
                   Réserver
                 </ButtonCTA>
@@ -244,6 +216,42 @@ const Pricing = () => {
                   Réserver
                 </ButtonCTA>
               </Link>
+            </div>
+          </div>
+          
+          {/* Pack Intensif 3 mois déplacé ici (non mis en avant) */}
+          <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover md:col-span-4">
+            <div className="p-6 border-b border-gray-200 bg-gray-50">
+              <h3 className="text-2xl font-bold text-dark-blue mb-2">Pack Intensif (3 mois)</h3>
+              <div className="flex items-baseline">
+                <span className="text-3xl font-bold">1350€</span>
+              </div>
+              <p className="text-sm text-gray-500 mt-2">12 cours / 3 mois</p>
+            </div>
+            <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="flex items-start">
+                <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
+                <span>Économie de 10%</span>
+              </div>
+              <div className="flex items-start">
+                <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
+                <span>Progrès garantis</span>
+              </div>
+              <div className="flex items-start">
+                <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
+                <span>Support premium 7j/7</span>
+              </div>
+              <div className="flex items-start">
+                <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
+                <span>Bilan détaillé</span>
+              </div>
+              <div className="md:col-span-4 mt-4">
+                <Link to="/reserver?plan=intensif">
+                  <ButtonCTA variant="dark" className="w-full md:w-auto">
+                    Réserver
+                  </ButtonCTA>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

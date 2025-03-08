@@ -32,7 +32,7 @@ const TestimonialsPage = () => {
     {
       id: 4,
       name: "Pierre",
-      relation: "élève en terminale",
+      relation: "élève en 6e secondaire",
       content: "Après quelques séances, j'ai vraiment commencé à voir les mathématiques différemment. Les concepts complexes sont devenus plus clairs et logiques.",
       rating: 5
     },

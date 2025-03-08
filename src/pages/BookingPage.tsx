@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -11,6 +12,7 @@ import { fr } from 'date-fns/locale';
 import { CalendarIcon, ArrowLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+
 const BookingPage = () => {
   const navigate = useNavigate();
   const {
@@ -21,6 +23,7 @@ const BookingPage = () => {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [date, setDate] = useState<Date | undefined>(undefined);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -34,13 +37,16 @@ const BookingPage = () => {
       return;
     }
 
-    // Simulation d'envoi de formulaire
+    // Simulation d'envoi de formulaire - En réalité, nous enverrions à mathsreussiteacademy@hotmail.com
     toast({
       title: "Réservation envoyée !",
       description: `Votre demande pour le ${date ? format(date, 'PPP', {
         locale: fr
       }) : ''} a bien été prise en compte. Nous vous contacterons rapidement.`
     });
+
+    // Dans un environnement de production, nous enverrions un email à mathsreussiteacademy@hotmail.com
+    // avec toutes les informations du formulaire bien formatées
 
     // Reset form
     setName('');
@@ -49,6 +55,14 @@ const BookingPage = () => {
     setMessage('');
     setDate(undefined);
   };
+
+  // Fonction pour déterminer si une date est dans le passé
+  const isPastDate = (date: Date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return date < today;
+  };
+
   return <div className="min-h-screen bg-[#F5F5F5] py-20">
       <div className="container px-6 lg:px-8">
         <Button onClick={() => navigate(-1)} variant="outline" className="mb-8">
@@ -79,7 +93,7 @@ const BookingPage = () => {
               
               <div className="space-y-2">
                 <Label htmlFor="phone">Téléphone *</Label>
-                <Input id="phone" value={phone} onChange={e => setPhone(e.target.value)} placeholder="06 XX XX XX XX" required />
+                <Input id="phone" value={phone} onChange={e => setPhone(e.target.value)} placeholder="04 XX XX XX XX" required />
               </div>
               
               <div className="space-y-2">
@@ -94,7 +108,15 @@ const BookingPage = () => {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar mode="single" selected={date} onSelect={setDate} initialFocus locale={fr} className={cn("p-3 pointer-events-auto")} />
+                    <Calendar 
+                      mode="single" 
+                      selected={date} 
+                      onSelect={setDate} 
+                      initialFocus 
+                      locale={fr} 
+                      className={cn("p-3 pointer-events-auto")}
+                      disabled={isPastDate}
+                    />
                   </PopoverContent>
                 </Popover>
               </div>
@@ -161,4 +183,5 @@ const BookingPage = () => {
       </div>
     </div>;
 };
+
 export default BookingPage;

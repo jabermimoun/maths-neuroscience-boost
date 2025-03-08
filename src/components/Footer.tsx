@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+
 const Footer = () => {
   return <footer className="bg-dark-blue text-white py-12" id="contact">
       <div className="container px-6 lg:px-8">
@@ -37,11 +39,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 text-gold" />
-                <span>01 23 45 67 89</span>
+                <span>0488 13 12 19</span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 text-gold" />
-                <span>contact@mathsreussite.academy</span>
+                <span>mathsreussiteacademy@hotmail.com</span>
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-1 text-gold" />
@@ -98,4 +100,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 export default Footer;
