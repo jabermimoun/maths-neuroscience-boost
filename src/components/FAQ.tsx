@@ -7,7 +7,7 @@ import emailjs from 'emailjs-com';
 
 // EmailJS configuration
 const EMAILJS_SERVICE_ID = 'service_7nj26yk';
-const EMAILJS_TEMPLATE_ID = 'service_7nj26yk';
+const EMAILJS_TEMPLATE_ID = 'template_8oqwc9f';
 const EMAILJS_PUBLIC_KEY = 'FCNydsW7-7kmRFZDB';
 
 interface FAQItemProps {

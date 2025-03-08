@@ -189,40 +189,7 @@ const Pricing = () => {
             </div>
           </div>
           
-          {/* À l'unité */}
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover flex flex-col h-full">
-            <div className="p-6 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-2xl font-bold text-dark-blue mb-2">À l'unité</h3>
-              <div className="flex items-baseline">
-                <span className="text-3xl font-bold">130€</span>
-                <span className="text-gray-500 ml-2">/cours</span>
-              </div>
-              <p className="text-sm text-gray-500 mt-2">2h minimum par séance</p>
-            </div>
-            <div className="p-6 flex flex-col flex-grow">
-              <ul className="space-y-3 mb-6 flex-grow">
-                <li className="flex items-start">
-                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
-                  <span>Flexible</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
-                  <span>Idéal pour l'aide ponctuelle</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
-                  <span>Sans engagement</span>
-                </li>
-              </ul>
-              <Link to="/reserver?plan=unitaire" className="mt-auto">
-                <ButtonCTA variant="dark" className="w-full">
-                  Réserver
-                </ButtonCTA>
-              </Link>
-            </div>
-          </div>
-          
-          {/* Pack Excellence */}
+          {/* Pack Excellence - moved before À l'unité */}
           <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover flex flex-col h-full">
             <div className="p-6 border-b border-gray-200 bg-gray-50">
               <h3 className="text-2xl font-bold text-dark-blue mb-2">Pack Excellence</h3>
@@ -251,6 +218,39 @@ const Pricing = () => {
                 </li>
               </ul>
               <Link to="/reserver?plan=intensif" className="mt-auto">
+                <ButtonCTA variant="dark" className="w-full">
+                  Réserver
+                </ButtonCTA>
+              </Link>
+            </div>
+          </div>
+          
+          {/* À l'unité - moved after Pack Excellence */}
+          <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover flex flex-col h-full">
+            <div className="p-6 border-b border-gray-200 bg-gray-50">
+              <h3 className="text-2xl font-bold text-dark-blue mb-2">À l'unité</h3>
+              <div className="flex items-baseline">
+                <span className="text-3xl font-bold">130€</span>
+                <span className="text-gray-500 ml-2">/cours</span>
+              </div>
+              <p className="text-sm text-gray-500 mt-2">2h minimum par séance</p>
+            </div>
+            <div className="p-6 flex flex-col flex-grow">
+              <ul className="space-y-3 mb-6 flex-grow">
+                <li className="flex items-start">
+                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
+                  <span>Flexible</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
+                  <span>Idéal pour l'aide ponctuelle</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
+                  <span>Sans engagement</span>
+                </li>
+              </ul>
+              <Link to="/reserver?plan=unitaire" className="mt-auto">
                 <ButtonCTA variant="dark" className="w-full">
                   Réserver
                 </ButtonCTA>
