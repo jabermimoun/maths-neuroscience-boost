@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,20 +12,49 @@ import { fr } from 'date-fns/locale';
 import { CalendarIcon, ArrowLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import emailjs from 'emailjs-com';
+
+// EmailJS configuration
+const EMAILJS_SERVICE_ID = 'default_service'; // You need to replace with your actual service ID
+const EMAILJS_TEMPLATE_ID = 'template_default'; // You need to replace with your actual template ID
+const EMAILJS_USER_ID = 'user_xxxxxxxxxxxx'; // You need to replace with your actual user ID
 
 const BookingPage = () => {
   const navigate = useNavigate();
-  const {
-    toast
-  } = useToast();
+  const location = useLocation();
+  const { toast } = useToast();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [date, setDate] = useState<Date | undefined>(undefined);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Get any pre-selected plan from URL parameters
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const plan = searchParams.get('plan');
+    const type = searchParams.get('type');
+    
+    if (type === 'diagnostic') {
+      setMessage("Je souhaite recevoir un diagnostic gratuit personnalisé.");
+    } else if (plan) {
+      const planMessages: Record<string, string> = {
+        'mensuel': "Je suis intéressé(e) par l'offre Suivi Régulier (4 cours/mois).",
+        'intensif-mensuel': "Je suis intéressé(e) par l'offre Accélération (8 cours/mois).",
+        'intensif': "Je suis intéressé(e) par le Pack Excellence (12 cours/3 mois).",
+        'unitaire': "Je suis intéressé(e) par un cours à l'unité."
+      };
+      
+      if (planMessages[plan]) {
+        setMessage(planMessages[plan]);
+      }
+    }
+  }, [location]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     // Validation basique
     if (!name || !email || !phone || !date) {
@@ -34,42 +63,70 @@ const BookingPage = () => {
         description: "Veuillez remplir tous les champs obligatoires.",
         variant: "destructive"
       });
+      setIsSubmitting(false);
       return;
     }
 
     // Formatage des informations pour l'email
     const formattedDate = date ? format(date, 'PPP', { locale: fr }) : '';
-    const emailSubject = `Nouvelle réservation de cours - ${name}`;
-    const emailBody = `
-      Nouvelle demande de réservation:
-      
-      Nom: ${name}
-      Email: ${email}
-      Téléphone: ${phone}
-      Date souhaitée: ${formattedDate}
-      Message: ${message || 'Aucun message'}
-      
-      Veuillez contacter cette personne pour confirmer la réservation.
-    `;
+    
+    try {
+      // Préparation des données pour EmailJS
+      const templateParams = {
+        name: name,
+        email: email,
+        phone: phone,
+        date: formattedDate,
+        message: message || 'Aucun message',
+        to_email: 'mathsreussiteacademy@hotmail.com',
+        subject: `Nouvelle réservation de cours - ${name}`
+      };
 
-    // Si nous étions sur un serveur, nous enverrions un email ici
-    // Dans un vrai environnement de production, nous utiliserions une API pour envoyer un email
-    console.log('Email qui serait envoyé à mathsreussiteacademy@hotmail.com:');
-    console.log('Objet:', emailSubject);
-    console.log('Contenu:', emailBody);
+      // Log des informations qui seraient envoyées (pour debug)
+      console.log('Email qui serait envoyé à mathsreussiteacademy@hotmail.com:');
+      console.log('Objet:', `Nouvelle réservation de cours - ${name}`);
+      console.log('Contenu:', `
+        Nouvelle demande de réservation:
+        
+        Nom: ${name}
+        Email: ${email}
+        Téléphone: ${phone}
+        Date souhaitée: ${formattedDate}
+        Message: ${message || 'Aucun message'}
+        
+        Veuillez contacter cette personne pour confirmer la réservation.
+      `);
 
-    // Affichage d'une confirmation à l'utilisateur
-    toast({
-      title: "Réservation envoyée !",
-      description: `Votre demande pour le ${formattedDate} a bien été prise en compte. Nous vous contacterons rapidement.`
-    });
+      // Commenté jusqu'à ce que les identifiants EmailJS soient configurés
+      // await emailjs.send(
+      //   EMAILJS_SERVICE_ID,
+      //   EMAILJS_TEMPLATE_ID,
+      //   templateParams,
+      //   EMAILJS_USER_ID
+      // );
 
-    // Reset form
-    setName('');
-    setEmail('');
-    setPhone('');
-    setMessage('');
-    setDate(undefined);
+      // Affichage d'une confirmation à l'utilisateur
+      toast({
+        title: "Réservation envoyée !",
+        description: `Votre demande pour le ${formattedDate} a bien été prise en compte. Nous vous contacterons rapidement.`
+      });
+
+      // Reset form
+      setName('');
+      setEmail('');
+      setPhone('');
+      setMessage('');
+      setDate(undefined);
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi de l\'email:', error);
+      toast({
+        title: "Erreur lors de l'envoi",
+        description: "Une erreur est survenue lors de l'envoi de votre demande. Veuillez réessayer ultérieurement.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Fonction pour déterminer si une date est dans le passé
@@ -79,7 +136,8 @@ const BookingPage = () => {
     return date < today;
   };
 
-  return <div className="min-h-screen bg-[#F5F5F5] py-20">
+  return (
+    <div className="min-h-screen bg-[#F5F5F5] py-20">
       <div className="container px-6 lg:px-8">
         <Button onClick={() => navigate(-1)} variant="outline" className="mb-8">
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -130,8 +188,8 @@ const BookingPage = () => {
                       onSelect={setDate} 
                       initialFocus 
                       locale={fr} 
-                      className={cn("p-3 pointer-events-auto")}
                       disabled={isPastDate}
+                      className={cn("p-3 pointer-events-auto")}
                     />
                   </PopoverContent>
                 </Popover>
@@ -142,8 +200,12 @@ const BookingPage = () => {
                 <Textarea id="message" value={message} onChange={e => setMessage(e.target.value)} placeholder="Précisez votre demande..." rows={4} />
               </div>
               
-              <Button type="submit" className="w-full bg-vibrant-orange hover:bg-vibrant-orange/90 text-white">
-                Envoyer ma demande de réservation
+              <Button 
+                type="submit" 
+                className="w-full bg-vibrant-orange hover:bg-vibrant-orange/90 text-white"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande de réservation'}
               </Button>
             </form>
           </div>
@@ -198,7 +260,8 @@ const BookingPage = () => {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default BookingPage;

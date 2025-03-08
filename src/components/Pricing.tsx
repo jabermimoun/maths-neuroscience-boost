@@ -111,8 +111,10 @@ const Pricing = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover">
+        {/* Grid de prix avec cartes alignées */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Suivi Régulier */}
+          <div className="lg:col-span-3 bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover h-full flex flex-col">
             <div className="p-6 border-b border-gray-200 bg-gray-50">
               <h3 className="text-2xl font-bold text-dark-blue mb-2">Suivi Régulier</h3>
               <div className="flex items-baseline">
@@ -121,8 +123,8 @@ const Pricing = () => {
               </div>
               <p className="text-sm text-gray-500 mt-2">4 cours/mois (2h/séance)</p>
             </div>
-            <div className="p-6">
-              <ul className="space-y-3 mb-6">
+            <div className="p-6 flex flex-col flex-grow">
+              <ul className="space-y-3 mb-6 flex-grow">
                 <li className="flex items-start">
                   <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
                   <span>Suivi personnalisé</span>
@@ -136,7 +138,7 @@ const Pricing = () => {
                   <span>Support entre les cours</span>
                 </li>
               </ul>
-              <Link to="/reserver?plan=mensuel">
+              <Link to="/reserver?plan=mensuel" className="mt-auto">
                 <ButtonCTA variant="dark" className="w-full">
                   Réserver
                 </ButtonCTA>
@@ -144,8 +146,8 @@ const Pricing = () => {
             </div>
           </div>
           
-          {/* Pack Accélération 8 cours par mois mis en avant */}
-          <div className="bg-white rounded-lg shadow-xl border-2 border-vibrant-orange relative overflow-hidden card-hover transform scale-105 z-10 md:col-span-2">
+          {/* Pack Accélération - mis en avant */}
+          <div className="lg:col-span-6 bg-white rounded-lg shadow-xl border-2 border-vibrant-orange relative overflow-hidden card-hover h-full flex flex-col transform lg:scale-105 z-10">
             <div className="absolute -right-12 top-6 bg-vibrant-orange text-white py-1 px-12 rotate-45">
               Populaire
             </div>
@@ -157,8 +159,8 @@ const Pricing = () => {
               </div>
               <p className="text-sm text-white/70 mt-2">8 cours/mois (2h/séance)</p>
             </div>
-            <div className="p-6">
-              <ul className="space-y-3 mb-6">
+            <div className="p-6 flex flex-col flex-grow">
+              <ul className="space-y-3 mb-6 flex-grow">
                 <li className="flex items-start">
                   <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
                   <span>Suivi premium 7j/7</span>
@@ -179,7 +181,7 @@ const Pricing = () => {
               <p className="text-center text-dark-blue font-medium mb-4 bg-blue-50 py-2 rounded-md">
                 L'option préférée des parents et élèves pour des résultats rapides !
               </p>
-              <Link to="/reserver?plan=intensif-mensuel">
+              <Link to="/reserver?plan=intensif-mensuel" className="mt-auto">
                 <ButtonCTA variant="gold" className="w-full">
                   Réserver
                 </ButtonCTA>
@@ -187,7 +189,8 @@ const Pricing = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover">
+          {/* À l'unité */}
+          <div className="lg:col-span-3 bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover h-full flex flex-col">
             <div className="p-6 border-b border-gray-200 bg-gray-50">
               <h3 className="text-2xl font-bold text-dark-blue mb-2">À l'unité</h3>
               <div className="flex items-baseline">
@@ -196,8 +199,8 @@ const Pricing = () => {
               </div>
               <p className="text-sm text-gray-500 mt-2">2h minimum par séance</p>
             </div>
-            <div className="p-6">
-              <ul className="space-y-3 mb-6">
+            <div className="p-6 flex flex-col flex-grow">
+              <ul className="space-y-3 mb-6 flex-grow">
                 <li className="flex items-start">
                   <Check size={20} className="text-vibrant-orange shrink-0 mt-1 mr-2" />
                   <span>Flexible</span>
@@ -211,7 +214,7 @@ const Pricing = () => {
                   <span>Sans engagement</span>
                 </li>
               </ul>
-              <Link to="/reserver?plan=unitaire">
+              <Link to="/reserver?plan=unitaire" className="mt-auto">
                 <ButtonCTA variant="dark" className="w-full">
                   Réserver
                 </ButtonCTA>
@@ -219,8 +222,8 @@ const Pricing = () => {
             </div>
           </div>
           
-          {/* Pack Excellence (remplace Pack Intensif) */}
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover md:col-span-4">
+          {/* Pack Excellence */}
+          <div className="lg:col-span-12 bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover mt-6">
             <div className="p-6 border-b border-gray-200 bg-gray-50">
               <h3 className="text-2xl font-bold text-dark-blue mb-2">Pack Excellence (3 mois)</h3>
               <div className="flex items-baseline">
