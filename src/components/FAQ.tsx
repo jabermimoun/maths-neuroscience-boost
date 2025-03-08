@@ -1,10 +1,14 @@
-
 import React, { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import ButtonCTA from './ButtonCTA';
 import { useToast } from '@/hooks/use-toast';
 import emailjs from 'emailjs-com';
+
+// EmailJS configuration
+const EMAILJS_SERVICE_ID = 'service_7nj26yk';
+const EMAILJS_TEMPLATE_ID = 'service_7nj26yk';
+const EMAILJS_PUBLIC_KEY = 'FCNydsW7-7kmRFZDB';
 
 interface FAQItemProps {
   question: string;
@@ -107,33 +111,24 @@ const FAQ = () => {
     try {
       // Préparation des données pour EmailJS
       const templateParams = {
-        name: formData.name,
+        from_name: formData.name,
         email: formData.email,
         level: formData.level || 'Non spécifié',
         message: formData.message || 'Aucun message',
+        to_name: 'Maths Réussite Academy',
         to_email: 'mathsreussiteacademy@hotmail.com',
         subject: `Nouvelle demande de contact - ${formData.name}`
       };
       
-      // Log des informations qui seraient envoyées (pour debug)
-      console.log('Email qui serait envoyé à mathsreussiteacademy@hotmail.com:');
-      console.log('Objet:', `Nouvelle demande de contact - ${formData.name}`);
-      console.log('Contenu:', `
-        Nouvelle demande de contact:
-        
-        Nom: ${formData.name}
-        Email: ${formData.email}
-        Niveau de l'élève: ${formData.level || 'Non spécifié'}
-        Message: ${formData.message || 'Aucun message'}
-      `);
+      // Envoi de l'email via EmailJS
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
       
-      // Commenté jusqu'à ce que les identifiants EmailJS soient configurés
-      // await emailjs.send(
-      //   'service_id', // Remplacer par votre service ID
-      //   'template_id', // Remplacer par votre template ID
-      //   templateParams,
-      //   'user_id' // Remplacer par votre user ID
-      // );
+      console.log('Email envoyé avec succès:', response);
       
       toast({
         title: "Message envoyé !",

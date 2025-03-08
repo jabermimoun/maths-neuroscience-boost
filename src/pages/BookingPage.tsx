@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -15,9 +14,9 @@ import { cn } from '@/lib/utils';
 import emailjs from 'emailjs-com';
 
 // EmailJS configuration
-const EMAILJS_SERVICE_ID = 'default_service'; // You need to replace with your actual service ID
-const EMAILJS_TEMPLATE_ID = 'template_default'; // You need to replace with your actual template ID
-const EMAILJS_USER_ID = 'user_xxxxxxxxxxxx'; // You need to replace with your actual user ID
+const EMAILJS_SERVICE_ID = 'service_7nj26yk';
+const EMAILJS_TEMPLATE_ID = 'service_7nj26yk';
+const EMAILJS_PUBLIC_KEY = 'FCNydsW7-7kmRFZDB';
 
 const BookingPage = () => {
   const navigate = useNavigate();
@@ -73,37 +72,25 @@ const BookingPage = () => {
     try {
       // Préparation des données pour EmailJS
       const templateParams = {
-        name: name,
+        from_name: name,
         email: email,
         phone: phone,
         date: formattedDate,
         message: message || 'Aucun message',
+        to_name: 'Maths Réussite Academy',
         to_email: 'mathsreussiteacademy@hotmail.com',
         subject: `Nouvelle réservation de cours - ${name}`
       };
 
-      // Log des informations qui seraient envoyées (pour debug)
-      console.log('Email qui serait envoyé à mathsreussiteacademy@hotmail.com:');
-      console.log('Objet:', `Nouvelle réservation de cours - ${name}`);
-      console.log('Contenu:', `
-        Nouvelle demande de réservation:
-        
-        Nom: ${name}
-        Email: ${email}
-        Téléphone: ${phone}
-        Date souhaitée: ${formattedDate}
-        Message: ${message || 'Aucun message'}
-        
-        Veuillez contacter cette personne pour confirmer la réservation.
-      `);
+      // Envoi de l'email via EmailJS
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
 
-      // Commenté jusqu'à ce que les identifiants EmailJS soient configurés
-      // await emailjs.send(
-      //   EMAILJS_SERVICE_ID,
-      //   EMAILJS_TEMPLATE_ID,
-      //   templateParams,
-      //   EMAILJS_USER_ID
-      // );
+      console.log('Email envoyé avec succès:', response);
 
       // Affichage d'une confirmation à l'utilisateur
       toast({
