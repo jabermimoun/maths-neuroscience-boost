@@ -114,7 +114,7 @@ const Pricing = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover">
             <div className="p-6 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-2xl font-bold text-dark-blue mb-2">Mensuel</h3>
+              <h3 className="text-2xl font-bold text-dark-blue mb-2">Suivi Régulier</h3>
               <div className="flex items-baseline">
                 <span className="text-3xl font-bold">460€</span>
                 <span className="text-gray-500 ml-2">/mois</span>
@@ -144,13 +144,13 @@ const Pricing = () => {
             </div>
           </div>
           
-          {/* Pack Intensif 8 cours par mois mis en avant */}
+          {/* Pack Accélération 8 cours par mois mis en avant */}
           <div className="bg-white rounded-lg shadow-xl border-2 border-vibrant-orange relative overflow-hidden card-hover transform scale-105 z-10 md:col-span-2">
             <div className="absolute -right-12 top-6 bg-vibrant-orange text-white py-1 px-12 rotate-45">
               Populaire
             </div>
             <div className="p-6 border-b border-gray-200 bg-dark-blue text-white">
-              <h3 className="text-2xl font-bold mb-2">Intensif</h3>
+              <h3 className="text-2xl font-bold mb-2">Accélération</h3>
               <div className="flex items-baseline">
                 <span className="text-3xl font-bold">900€</span>
                 <span className="text-white/70 ml-2">/mois</span>
@@ -219,10 +219,10 @@ const Pricing = () => {
             </div>
           </div>
           
-          {/* Pack Intensif 3 mois déplacé ici (non mis en avant) */}
+          {/* Pack Excellence (remplace Pack Intensif) */}
           <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden card-hover md:col-span-4">
             <div className="p-6 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-2xl font-bold text-dark-blue mb-2">Pack Intensif (3 mois)</h3>
+              <h3 className="text-2xl font-bold text-dark-blue mb-2">Pack Excellence (3 mois)</h3>
               <div className="flex items-baseline">
                 <span className="text-3xl font-bold">1350€</span>
               </div>

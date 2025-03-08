@@ -37,16 +37,32 @@ const BookingPage = () => {
       return;
     }
 
-    // Simulation d'envoi de formulaire - En réalité, nous enverrions à mathsreussiteacademy@hotmail.com
+    // Formatage des informations pour l'email
+    const formattedDate = date ? format(date, 'PPP', { locale: fr }) : '';
+    const emailSubject = `Nouvelle réservation de cours - ${name}`;
+    const emailBody = `
+      Nouvelle demande de réservation:
+      
+      Nom: ${name}
+      Email: ${email}
+      Téléphone: ${phone}
+      Date souhaitée: ${formattedDate}
+      Message: ${message || 'Aucun message'}
+      
+      Veuillez contacter cette personne pour confirmer la réservation.
+    `;
+
+    // Si nous étions sur un serveur, nous enverrions un email ici
+    // Dans un vrai environnement de production, nous utiliserions une API pour envoyer un email
+    console.log('Email qui serait envoyé à mathsreussiteacademy@hotmail.com:');
+    console.log('Objet:', emailSubject);
+    console.log('Contenu:', emailBody);
+
+    // Affichage d'une confirmation à l'utilisateur
     toast({
       title: "Réservation envoyée !",
-      description: `Votre demande pour le ${date ? format(date, 'PPP', {
-        locale: fr
-      }) : ''} a bien été prise en compte. Nous vous contacterons rapidement.`
+      description: `Votre demande pour le ${formattedDate} a bien été prise en compte. Nous vous contacterons rapidement.`
     });
-
-    // Dans un environnement de production, nous enverrions un email à mathsreussiteacademy@hotmail.com
-    // avec toutes les informations du formulaire bien formatées
 
     // Reset form
     setName('');
@@ -167,6 +183,7 @@ const BookingPage = () => {
                   <h3 className="font-medium text-gold">Horaires disponibles</h3>
                   <p>Du lundi au vendredi : 14h - 20h</p>
                   <p>Samedi : 10h - 18h</p>
+                  <p>Dimanche : 10h - 18h</p>
                 </div>
                 <div>
                   <h3 className="font-medium text-gold">Où se déroulent les cours ?</h3>
