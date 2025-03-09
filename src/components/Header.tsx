@@ -6,7 +6,7 @@ import { Phone, Pause, Play } from 'lucide-react';
 
 const Header = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -48,32 +48,17 @@ const Header = () => {
           
           <div className="relative animate-fade-in-right">
             <div className="aspect-video bg-black/20 rounded-lg overflow-hidden video-overlay group cursor-pointer shadow-xl">
-              <div 
-                className="absolute inset-0 flex items-center justify-center z-10"
-                onClick={togglePlay}
-              >
-                {!isPlaying && (
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                    <Play size={30} className="ml-2 text-vibrant-orange" />
-                  </div>
-                )}
-                {isPlaying && (
-                  <div className="w-20 h-20 bg-white/80 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 opacity-0 hover:opacity-100">
-                    <Pause size={30} className="text-vibrant-orange" />
-                  </div>
-                )}
-              </div>
-              <video
-                ref={videoRef}
-                src="/video/promo.mp4"
+              <iframe 
                 className="w-full h-full object-cover"
-                preload="metadata"
-                onClick={togglePlay}
-                onEnded={() => setIsPlaying(false)}
-              />
+                src="https://www.youtube.com/embed/CxiHC4P6q80?enablejsapi=1"
+                title="Vidéo de présentation"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
             <div className="absolute -bottom-4 -right-4 bg-vibrant-orange text-white py-2 px-4 rounded-md shadow-lg">
-              30-60 secondes
+              Vidéo explicative
             </div>
           </div>
         </div>
