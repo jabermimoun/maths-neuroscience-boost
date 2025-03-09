@@ -13,7 +13,7 @@ const AboutMe = () => {
             <div className="relative w-full max-w-md mx-auto lg:mx-0">
               <div className="aspect-square rounded-full overflow-hidden border-4 border-white shadow-xl">
                 <img
-                  src="/lovable-uploads/85816ee1-2fa4-4c2a-bf32-1b1e53fc8dff.png"
+                  src="/lovable-uploads/0ad3a494-bfba-4b4e-b8f4-d896fe1da02d.png"
                   alt="Portrait professionnel"
                   className="w-full h-full object-cover"
                 />
