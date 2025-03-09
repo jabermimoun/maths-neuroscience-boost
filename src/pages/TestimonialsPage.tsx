@@ -19,8 +19,9 @@ const TestimonialsPage = () => {
   const [showAddReviewForm, setShowAddReviewForm] = useState(false);
   const [pendingReviews, setPendingReviews] = useState<Testimonial[]>([]);
   const [approvedReviews, setApprovedReviews] = useState<Testimonial[]>([]);
+  const [adminPassword, setAdminPassword] = useState("");
+  const [isPasswordPromptOpen, setIsPasswordPromptOpen] = useState(false);
   
-  // Static testimonials
   const staticTestimonials = [
     {
       id: 1,
@@ -59,7 +60,6 @@ const TestimonialsPage = () => {
     }
   ];
 
-  // Load reviews from localStorage
   useEffect(() => {
     try {
       const storedPending = JSON.parse(localStorage.getItem('pendingReviews') || '[]');
@@ -72,17 +72,30 @@ const TestimonialsPage = () => {
     }
   }, []);
   
-  // Toggle admin section with a secret key combination (ctrl + shift + A)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-        setShowAdminSection(prev => !prev);
+        promptForPassword();
       }
     };
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+  
+  const promptForPassword = () => {
+    setIsPasswordPromptOpen(true);
+  };
+  
+  const checkPassword = () => {
+    if (adminPassword === "fidoivi") {
+      setShowAdminSection(true);
+      setIsPasswordPromptOpen(false);
+      setAdminPassword("");
+    } else {
+      alert("Mot de passe incorrect");
+    }
+  };
   
   const approveReview = (reviewId: number) => {
     const reviewToApprove = pendingReviews.find(review => review.id === reviewId);
@@ -111,7 +124,7 @@ const TestimonialsPage = () => {
   };
 
   const goToAdminPanel = () => {
-    navigate('/admin');
+    navigate('/admin-panel');
   };
 
   return (
@@ -147,7 +160,34 @@ const TestimonialsPage = () => {
           </div>
         )}
         
-        {/* Admin Section (hidden by default, revealed with ctrl+shift+A) */}
+        {isPasswordPromptOpen && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-lg max-w-md w-full">
+              <h3 className="text-xl font-bold mb-4">Accès administrateur</h3>
+              <p className="mb-4">Veuillez entrer le mot de passe pour accéder à la section d'administration.</p>
+              <input
+                type="password"
+                value={adminPassword}
+                onChange={(e) => setAdminPassword(e.target.value)}
+                className="w-full border border-gray-300 rounded p-2 mb-4"
+                placeholder="Mot de passe"
+                onKeyDown={(e) => e.key === 'Enter' && checkPassword()}
+              />
+              <div className="flex justify-end gap-2">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setIsPasswordPromptOpen(false)}
+                >
+                  Annuler
+                </Button>
+                <Button onClick={checkPassword}>
+                  Confirmer
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+        
         {showAdminSection && (
           <div className="mb-12 bg-gray-100 p-6 rounded-lg border-2 border-red-300">
             <div className="flex justify-between items-center mb-4">
@@ -237,7 +277,6 @@ const TestimonialsPage = () => {
           </div>
         )}
 
-        {/* Public Testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[...staticTestimonials, ...approvedReviews].map((testimonial) => (
             <div key={testimonial.id} className="bg-white rounded-lg p-6 shadow-md">

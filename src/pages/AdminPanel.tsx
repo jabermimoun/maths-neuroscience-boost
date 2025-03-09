@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -20,9 +19,25 @@ const AdminPanel = () => {
   const { toast } = useToast();
   const [pendingReviews, setPendingReviews] = useState<Review[]>([]);
   const [approvedReviews, setApprovedReviews] = useState<Review[]>([]);
-  
-  // Load reviews from localStorage
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+
   useEffect(() => {
+    promptForPassword();
+  }, []);
+
+  const promptForPassword = () => {
+    const savedPassword = prompt("Veuillez entrer le mot de passe administrateur:");
+    if (savedPassword === "fidoivi") {
+      setIsAuthenticated(true);
+      loadReviews();
+    } else {
+      alert("Mot de passe incorrect");
+      navigate('/');
+    }
+  };
+
+  const loadReviews = () => {
     try {
       const storedPending = JSON.parse(localStorage.getItem('pendingReviews') || '[]');
       const storedApproved = JSON.parse(localStorage.getItem('approvedReviews') || '[]');
@@ -32,8 +47,8 @@ const AdminPanel = () => {
     } catch (error) {
       console.error('Error loading reviews from localStorage:', error);
     }
-  }, []);
-  
+  };
+
   const approveReview = (reviewId: number) => {
     const reviewToApprove = pendingReviews.find(review => review.id === reviewId);
     if (!reviewToApprove) return;
@@ -47,7 +62,7 @@ const AdminPanel = () => {
     localStorage.setItem('pendingReviews', JSON.stringify(updatedPending));
     localStorage.setItem('approvedReviews', JSON.stringify(updatedApproved));
   };
-  
+
   const deleteReview = (reviewId: number, isPending: boolean) => {
     if (isPending) {
       const updatedPending = pendingReviews.filter(review => review.id !== reviewId);
@@ -59,7 +74,7 @@ const AdminPanel = () => {
       localStorage.setItem('approvedReviews', JSON.stringify(updatedApproved));
     }
   };
-  
+
   const formatDate = (dateString: string) => {
     try {
       const date = new Date(dateString);
@@ -83,6 +98,10 @@ const AdminPanel = () => {
       description: "L'URL du panneau d'administration a été copiée dans le presse-papier.",
     });
   };
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] py-20">
@@ -125,7 +144,6 @@ const AdminPanel = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Pending Reviews */}
           <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-bold text-vibrant-orange mb-4 flex items-center">
               Avis en attente de validation
@@ -184,7 +202,6 @@ const AdminPanel = () => {
             )}
           </div>
           
-          {/* Approved Reviews */}
           <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-bold text-green-600 mb-4 flex items-center">
               Avis approuvés

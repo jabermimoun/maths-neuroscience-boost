@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Index from '@/pages/Index';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/temoignages" element={<TestimonialsPage />} />
         <Route path="/admin-panel" element={<AdminPanel />} />
+        <Route path="/admin" element={<AdminPanel />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />

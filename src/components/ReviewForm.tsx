@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -67,7 +66,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
     try {
       // Get the current domain for the admin link
       const currentDomain = window.location.origin;
-      const adminUrl = `${currentDomain}/admin`;
+      const adminUrl = `${currentDomain}/admin-panel`;
       
       // Send email notification to admin
       const templateParams = {
@@ -79,7 +78,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
         to_email: 'mathsreussiteacademy@hotmail.com',
         subject: `Nouvel avis client - ${formData.name}`,
         message: `Un nouvel avis a été soumis par ${formData.name} (${formData.relation}). Note: ${rating}/5. Avis: ${formData.review}`,
-        admin_link: `Pour valider ou refuser cet avis, veuillez vous rendre sur votre espace d'administration: ${adminUrl}`
+        admin_link: `Pour valider ou refuser cet avis, veuillez vous rendre sur votre espace d'administration: ${adminUrl} (ou utilisez le raccourci Ctrl+Shift+A sur la page des témoignages, code d'accès: fidoivi)`
       };
       
       await emailjs.send(
