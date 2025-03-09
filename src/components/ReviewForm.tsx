@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -89,17 +88,30 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
         EMAILJS_PUBLIC_KEY
       );
       
-      // Store review in localStorage with debugging
+      // Store review in localStorage with improved debugging
       console.log('Storing new review in localStorage');
       
       // Retrieve existing pending reviews
       let pendingReviews = [];
       try {
         const storedReviews = localStorage.getItem('pendingReviews');
-        pendingReviews = storedReviews ? JSON.parse(storedReviews) : [];
-        console.log('Retrieved existing pending reviews:', pendingReviews);
+        console.log('Raw pendingReviews from localStorage:', storedReviews);
+        
+        if (storedReviews) {
+          pendingReviews = JSON.parse(storedReviews);
+          console.log('Parsed existing pending reviews:', pendingReviews);
+        } else {
+          console.log('No existing pending reviews found, initializing empty array');
+          pendingReviews = [];
+        }
       } catch (error) {
         console.error('Error parsing pendingReviews from localStorage:', error);
+        pendingReviews = [];
+      }
+      
+      // Ensure pendingReviews is an array
+      if (!Array.isArray(pendingReviews)) {
+        console.warn('pendingReviews is not an array, resetting to empty array');
         pendingReviews = [];
       }
       
@@ -120,8 +132,16 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
       pendingReviews.push(newReview);
       
       // Store updated pending reviews back to localStorage
-      localStorage.setItem('pendingReviews', JSON.stringify(pendingReviews));
+      const pendingReviewsJSON = JSON.stringify(pendingReviews);
+      localStorage.setItem('pendingReviews', pendingReviewsJSON);
       console.log('Updated pendingReviews in localStorage:', pendingReviews);
+      console.log('JSON string stored in localStorage:', pendingReviewsJSON);
+      
+      // Trigger a storage event to notify other components
+      window.dispatchEvent(new StorageEvent('storage', {
+        key: 'pendingReviews',
+        newValue: pendingReviewsJSON
+      }));
       
       // Success notification
       toast({

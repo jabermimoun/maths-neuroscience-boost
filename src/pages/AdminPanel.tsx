@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Star, Check, X, Shield, Copy } from 'lucide-react';
+import { ArrowLeft, Star, Check, X, Shield, Copy, RefreshCw } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface Review {
@@ -51,10 +51,18 @@ const AdminPanel = () => {
         try {
           storedPending = JSON.parse(pendingData);
           console.log('Parsed pending reviews:', storedPending);
+          
+          // Ensure it's an array
+          if (!Array.isArray(storedPending)) {
+            console.warn('pendingReviews is not an array, resetting to empty array');
+            storedPending = [];
+          }
         } catch (e) {
           console.error('Error parsing pending reviews:', e);
           storedPending = [];
         }
+      } else {
+        console.log('No pending reviews found in localStorage');
       }
       
       // Approved reviews
@@ -66,10 +74,18 @@ const AdminPanel = () => {
         try {
           storedApproved = JSON.parse(approvedData);
           console.log('Parsed approved reviews:', storedApproved);
+          
+          // Ensure it's an array
+          if (!Array.isArray(storedApproved)) {
+            console.warn('approvedReviews is not an array, resetting to empty array');
+            storedApproved = [];
+          }
         } catch (e) {
           console.error('Error parsing approved reviews:', e);
           storedApproved = [];
         }
+      } else {
+        console.log('No approved reviews found in localStorage');
       }
       
       setPendingReviews(storedPending);
@@ -104,6 +120,20 @@ const AdminPanel = () => {
     localStorage.setItem('pendingReviews', JSON.stringify(updatedPending));
     localStorage.setItem('approvedReviews', JSON.stringify(updatedApproved));
     
+    // Trigger storage events to update other components
+    window.dispatchEvent(new StorageEvent('storage', {
+      key: 'pendingReviews',
+      newValue: JSON.stringify(updatedPending)
+    }));
+    
+    window.dispatchEvent(new StorageEvent('storage', {
+      key: 'approvedReviews',
+      newValue: JSON.stringify(updatedApproved)
+    }));
+    
+    // Also dispatch a custom event
+    window.dispatchEvent(new Event('reviewsUpdated'));
+    
     toast({
       title: "Avis approuvé",
       description: "L'avis a été approuvé et est maintenant visible sur le site.",
@@ -117,11 +147,26 @@ const AdminPanel = () => {
       const updatedPending = pendingReviews.filter(review => review.id !== reviewId);
       setPendingReviews(updatedPending);
       localStorage.setItem('pendingReviews', JSON.stringify(updatedPending));
+      
+      // Trigger storage event
+      window.dispatchEvent(new StorageEvent('storage', {
+        key: 'pendingReviews',
+        newValue: JSON.stringify(updatedPending)
+      }));
     } else {
       const updatedApproved = approvedReviews.filter(review => review.id !== reviewId);
       setApprovedReviews(updatedApproved);
       localStorage.setItem('approvedReviews', JSON.stringify(updatedApproved));
+      
+      // Trigger storage event
+      window.dispatchEvent(new StorageEvent('storage', {
+        key: 'approvedReviews',
+        newValue: JSON.stringify(updatedApproved)
+      }));
     }
+    
+    // Also dispatch a custom event
+    window.dispatchEvent(new Event('reviewsUpdated'));
     
     toast({
       title: "Avis supprimé",
@@ -140,6 +185,7 @@ const AdminPanel = () => {
         minute: '2-digit'
       }).format(date);
     } catch (error) {
+      console.error('Error formatting date:', error);
       return 'Date invalide';
     }
   };
@@ -154,6 +200,7 @@ const AdminPanel = () => {
   };
   
   const refreshReviews = () => {
+    console.log('Manual refresh requested');
     loadReviews();
     toast({
       title: "Actualisation",
@@ -181,6 +228,15 @@ const AdminPanel = () => {
             <Shield className="mr-2 h-6 w-6 text-vibrant-orange" />
             Panneau d'administration
           </h1>
+          
+          <Button
+            onClick={refreshReviews}
+            variant="outline"
+            className="ml-auto"
+          >
+            <RefreshCw className="mr-2 h-4 w-4" />
+            Actualiser les avis
+          </Button>
         </div>
         
         <div className="bg-blue-50 rounded-lg p-5 text-blue-700 mb-8">

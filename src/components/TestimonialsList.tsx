@@ -20,6 +20,8 @@ const getApprovedReviews = (): Testimonial[] => {
     console.log('TestimonialsList: Getting approved reviews from localStorage');
     const storedData = localStorage.getItem('approvedReviews');
     
+    console.log('Raw approvedReviews data:', storedData);
+    
     if (!storedData) {
       console.log('No approved reviews found in localStorage');
       return [];
@@ -28,7 +30,14 @@ const getApprovedReviews = (): Testimonial[] => {
     try {
       const approvedReviews = JSON.parse(storedData);
       console.log('Found approved reviews:', approvedReviews);
-      return Array.isArray(approvedReviews) ? approvedReviews : [];
+      
+      // Ensure the result is an array
+      if (!Array.isArray(approvedReviews)) {
+        console.warn('approvedReviews from localStorage is not an array, returning empty array');
+        return [];
+      }
+      
+      return approvedReviews;
     } catch (parseError) {
       console.error('Error parsing approvedReviews from localStorage:', parseError);
       return [];
@@ -42,6 +51,30 @@ const getApprovedReviews = (): Testimonial[] => {
 const TestimonialsList: React.FC<TestimonialsListProps> = ({ staticTestimonials }) => {
   const [allTestimonials, setAllTestimonials] = useState<Testimonial[]>(staticTestimonials);
   
+  // Function to load testimonials
+  const loadTestimonials = () => {
+    try {
+      // Combine static testimonials with approved user testimonials
+      const approvedReviews = getApprovedReviews();
+      const combined = [...staticTestimonials, ...approvedReviews];
+      
+      console.log('Combined testimonials:', combined);
+      setAllTestimonials(combined);
+    } catch (error) {
+      console.error('Error combining testimonials:', error);
+      setAllTestimonials(staticTestimonials); // Fallback to static testimonials
+    }
+  };
+  
+  // Function to handle storage events
+  const handleStorageChange = (e: StorageEvent) => {
+    console.log('Storage change detected:', e.key);
+    if (e.key === 'approvedReviews' || e.key === 'pendingReviews') {
+      console.log('Reloading testimonials due to storage change');
+      loadTestimonials();
+    }
+  };
+  
   useEffect(() => {
     // Initial load of testimonials
     loadTestimonials();
@@ -49,26 +82,20 @@ const TestimonialsList: React.FC<TestimonialsListProps> = ({ staticTestimonials 
     // Set up event listener for storage changes
     window.addEventListener('storage', handleStorageChange);
     
+    // Also listen for custom events
+    const handleCustomEvent = () => {
+      console.log('Custom reviewsUpdated event detected');
+      loadTestimonials();
+    };
+    
+    window.addEventListener('reviewsUpdated', handleCustomEvent);
+    
     // Clean up
     return () => {
       window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('reviewsUpdated', handleCustomEvent);
     };
   }, [staticTestimonials]);
-  
-  const handleStorageChange = (e: StorageEvent) => {
-    if (e.key === 'approvedReviews') {
-      loadTestimonials();
-    }
-  };
-  
-  const loadTestimonials = () => {
-    // Combine static testimonials with approved user testimonials
-    const approvedReviews = getApprovedReviews();
-    const combined = [...staticTestimonials, ...approvedReviews];
-    
-    console.log('Combined testimonials:', combined);
-    setAllTestimonials(combined);
-  };
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
