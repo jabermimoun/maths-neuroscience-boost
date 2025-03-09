@@ -82,7 +82,7 @@ const Header = () => {
             <p className="text-lg text-white/80 mb-8">
               Les mathématiques ne sont pas une fatalité ! Grâce à une méthode basée sur les neurosciences, votre enfant peut progresser rapidement et durablement.
             </p>
-            <Link to="/reserver">
+            <a href="tel:+32488131219">
               <ButtonCTA 
                 variant="gold" 
                 size="lg" 
@@ -91,7 +91,7 @@ const Header = () => {
               >
                 Réservez un appel gratuit
               </ButtonCTA>
-            </Link>
+            </a>
           </div>
           
           <div className="relative animate-fade-in-right">

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
@@ -62,7 +63,7 @@ const Booking = () => {
                 variant="gold" 
                 size="lg" 
                 icon={<Phone size={20} />}
-                className="animate-pulse-subtle"
+                className="animate-pulse-subtle max-w-full px-4 sm:px-8 text-base sm:text-lg whitespace-normal sm:whitespace-nowrap text-center"
               >
                 Réserver un appel découverte
               </ButtonCTA>
@@ -80,7 +81,11 @@ const Booking = () => {
             
             <div className="flex justify-center">
               <Link to="/reserver">
-                <ButtonCTA variant="gold" size="lg">
+                <ButtonCTA 
+                  variant="gold" 
+                  size="lg"
+                  className="max-w-full px-4 sm:px-8 text-base sm:text-lg whitespace-normal sm:whitespace-nowrap text-center"
+                >
                   Réserver mon premier cours
                 </ButtonCTA>
               </Link>

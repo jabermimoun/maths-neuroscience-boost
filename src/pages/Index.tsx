@@ -54,13 +54,13 @@ const Index = () => {
       <FAQ />
       <Footer />
       
-      {/* Floating CTA Button */}
+      {/* Floating CTA Button - Updated with tel: link */}
       <div className="fixed bottom-6 right-6 z-40 md:hidden">
-        <button className="w-14 h-14 rounded-full bg-vibrant-orange shadow-lg flex items-center justify-center animate-pulse-subtle">
+        <a href="tel:+32488131219" className="w-14 h-14 rounded-full bg-vibrant-orange shadow-lg flex items-center justify-center animate-pulse-subtle">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
             <path d="M22 16.92V19.92C22 20.4704 21.7893 20.9983 21.4142 21.3992C21.0391 21.7999 20.5304 22.04 20 22.01C17.44 21.82 14.9599 20.9398 12.8699 19.44C10.9116 18.056 9.24711 16.333 7.98995 14.33C6.52 12.2 5.64001 9.71 5.46 7.14C5.43112 6.60904 5.67304 6.09998 6.07434 5.72408C6.47564 5.34818 7.00737 5.14109 7.54999 5.14H10.55C11.7166 5.12154 12.6676 6.05822 12.79 7.22C12.8719 8.00069 13.0278 8.77148 13.2599 9.52C13.4697 10.1798 13.2934 10.9022 12.8 11.4L11.39 12.81C12.5451 14.8706 14.3135 16.5524 16.46 17.61L17.87 16.2C18.3688 15.7052 19.096 15.5274 19.76 15.74C20.5086 15.9746 21.2795 16.1322 22.06 16.21C23.2338 16.3307 24.1772 17.2992 24.1389 18.47L22 16.92Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-        </button>
+        </a>
       </div>
     </div>
   );

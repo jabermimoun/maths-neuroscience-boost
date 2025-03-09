@@ -67,11 +67,11 @@ const Navbar = () => {
             <a href="#faq" onClick={handleContactClick} className="text-white/90 hover:text-white transition-colors hover-underline">
               Contact
             </a>
-            <Link to="/reserver">
+            <a href="tel:+32488131219">
               <ButtonCTA variant="gold" size="sm" icon={<Phone size={16} />}>
                 Réserver
               </ButtonCTA>
-            </Link>
+            </a>
           </div>
           
           <button 
@@ -130,11 +130,11 @@ const Navbar = () => {
           >
             Contact
           </a>
-          <Link to="/reserver">
+          <a href="tel:+32488131219">
             <ButtonCTA variant="gold" icon={<Phone size={16} />} className="mt-4" onClick={() => setIsMenuOpen(false)}>
               Réserver
             </ButtonCTA>
-          </Link>
+          </a>
         </div>
       </div>
     </nav>
