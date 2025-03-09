@@ -1,10 +1,24 @@
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ButtonCTA from './ButtonCTA';
-import { Phone } from 'lucide-react';
+import { Phone, Pause, Play } from 'lucide-react';
 
 const Header = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <header className="relative bg-hero-pattern min-h-[85vh] flex items-center py-20">
       <div className="absolute inset-0 bg-gradient-to-b from-[#1C1C1C]/50 to-[#1C1C1C]/30 mix-blend-multiply"></div>
@@ -34,15 +48,28 @@ const Header = () => {
           
           <div className="relative animate-fade-in-right">
             <div className="aspect-video bg-black/20 rounded-lg overflow-hidden video-overlay group cursor-pointer shadow-xl">
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                  <div className="w-0 h-0 border-y-8 border-y-transparent border-l-16 border-l-vibrant-orange ml-2"></div>
-                </div>
+              <div 
+                className="absolute inset-0 flex items-center justify-center z-10"
+                onClick={togglePlay}
+              >
+                {!isPlaying && (
+                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                    <Play size={30} className="ml-2 text-vibrant-orange" />
+                  </div>
+                )}
+                {isPlaying && (
+                  <div className="w-20 h-20 bg-white/80 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 opacity-0 hover:opacity-100">
+                    <Pause size={30} className="text-vibrant-orange" />
+                  </div>
+                )}
               </div>
-              <img 
-                src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=2672&auto=format&fit=crop" 
-                alt="Élève concentré travaillant sur des mathématiques" 
-                className="w-full h-full object-cover opacity-80"
+              <video
+                ref={videoRef}
+                src="/video/promo.mp4"
+                className="w-full h-full object-cover"
+                preload="metadata"
+                onClick={togglePlay}
+                onEnded={() => setIsPlaying(false)}
               />
             </div>
             <div className="absolute -bottom-4 -right-4 bg-vibrant-orange text-white py-2 px-4 rounded-md shadow-lg">

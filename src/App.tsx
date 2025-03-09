@@ -1,37 +1,32 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Index from '@/pages/Index';
+import MethodPage from '@/pages/MethodPage';
+import BookingPage from '@/pages/BookingPage';
+import BlogListPage from '@/pages/BlogListPage';
+import BlogPost from '@/pages/BlogPost';
+import TestimonialsPage from '@/pages/TestimonialsPage';
+import NotFound from '@/pages/NotFound';
+import { Toaster } from '@/components/ui/toaster';
+import AdminPanel from '@/pages/AdminPanel';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import BlogPost from "./pages/BlogPost";
-import BlogListPage from "./pages/BlogListPage";
-import TestimonialsPage from "./pages/TestimonialsPage";
-import BookingPage from "./pages/BookingPage";
-import MethodPage from "./pages/MethodPage";
-import NotFound from "./pages/NotFound";
+function App() {
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/methode" element={<MethodPage />} />
+        <Route path="/reserver" element={<BookingPage />} />
+        <Route path="/blog" element={<BlogListPage />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/temoignages" element={<TestimonialsPage />} />
+        <Route path="/admin-panel" element={<AdminPanel />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/blog" element={<BlogListPage />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/temoignages" element={<TestimonialsPage />} />
-          <Route path="/reserver" element={<BookingPage />} />
-          <Route path="/methode" element={<MethodPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+    </>
+  );
+}
 
 export default App;

@@ -1,11 +1,16 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
-import { Star, MessageSquare } from 'lucide-react';
+import { MessageSquare, Plus } from 'lucide-react';
+import TestimonialsList from './TestimonialsList';
+import ReviewForm from './ReviewForm';
 
 const Testimonials = () => {
-  const testimonials = [
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  
+  const staticTestimonials = [
     {
       id: 1,
       name: "Sophie",
@@ -29,6 +34,14 @@ const Testimonials = () => {
     }
   ];
 
+  const toggleReviewForm = () => {
+    setShowReviewForm(!showReviewForm);
+  };
+
+  const handleReviewSubmitted = () => {
+    setShowReviewForm(false);
+  };
+
   return (
     <section className="py-20 bg-soft-blue" id="temoignages">
       <div className="container px-6 lg:px-8">
@@ -38,35 +51,9 @@ const Testimonials = () => {
           center
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white rounded-lg p-6 shadow-md card-hover">
-              <div className="flex mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} size={20} className="text-vibrant-orange fill-vibrant-orange" />
-                ))}
-              </div>
-              
-              <blockquote className="text-gray-700 mb-6">
-                "{testimonial.content}"
-              </blockquote>
-              
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-light-blue rounded-full flex items-center justify-center mr-4">
-                  <span className="text-dark-blue font-bold text-lg">
-                    {testimonial.name.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-bold text-dark-blue">{testimonial.name}</p>
-                  <p className="text-sm text-gray-500">{testimonial.relation}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <TestimonialsList staticTestimonials={staticTestimonials} />
         
-        <div className="mt-12 flex justify-center">
+        <div className="mt-12 flex flex-col md:flex-row justify-center items-center gap-4">
           <Link to="/temoignages">
             <ButtonCTA 
               variant="gold"
@@ -75,7 +62,21 @@ const Testimonials = () => {
               Lire tous les avis
             </ButtonCTA>
           </Link>
+          
+          <ButtonCTA 
+            variant="dark"
+            icon={<Plus size={18} />}
+            onClick={toggleReviewForm}
+          >
+            Ajouter votre avis
+          </ButtonCTA>
         </div>
+        
+        {showReviewForm && (
+          <div className="mt-8 max-w-xl mx-auto">
+            <ReviewForm onReviewSubmitted={handleReviewSubmitted} />
+          </div>
+        )}
         
         <div className="mt-12 p-6 bg-white rounded-lg shadow-md text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
