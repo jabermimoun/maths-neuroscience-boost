@@ -32,10 +32,13 @@ const Header = () => {
         playerVars: {
           autoplay: 0,
           controls: 1,
-          rel: 0,
+          rel: 0,            // Disable related videos
           showinfo: 0,
           mute: 0,
-          modestbranding: 1
+          modestbranding: 1,
+          playlist: 'CxiHC4P6q80', // Set the same video as playlist to prevent suggestions
+          loop: 0,
+          fs: 1              // Enable fullscreen button
         },
         events: {
           onStateChange: (event: any) => {
