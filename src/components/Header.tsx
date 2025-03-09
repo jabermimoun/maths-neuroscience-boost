@@ -92,15 +92,20 @@ const Header = () => {
           </div>
           
           <div className="relative animate-fade-in-right">
-            <div className="aspect-video bg-black/20 rounded-lg overflow-hidden video-overlay group shadow-xl">
+            <div className="aspect-video bg-black/20 rounded-lg overflow-hidden video-overlay group shadow-xl relative">
               <div className="w-full h-full" ref={containerRef}></div>
               <div 
-                className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center z-10 cursor-pointer"
                 onClick={togglePlay}
               >
                 {!isPlaying && (
-                  <div className="w-20 h-20 bg-white/80 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 pointer-events-auto cursor-pointer">
+                  <div className="w-20 h-20 bg-white/80 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                     <Play size={30} className="ml-2 text-vibrant-orange" />
+                  </div>
+                )}
+                {isPlaying && (
+                  <div className="w-20 h-20 bg-white/80 rounded-full flex items-center justify-center transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                    <Pause size={30} className="text-vibrant-orange" />
                   </div>
                 )}
               </div>
