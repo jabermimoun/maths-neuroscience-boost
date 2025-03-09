@@ -30,9 +30,9 @@ const ButtonCTA = ({
       )}
       {...props}
     >
-      <span className="flex items-center gap-2 flex-nowrap">
+      <span className="flex items-center gap-2 flex-nowrap text-center">
         {icon}
-        {children}
+        <span className="text-sm sm:text-base md:text-lg">{children}</span>
       </span>
     </Button>
   );

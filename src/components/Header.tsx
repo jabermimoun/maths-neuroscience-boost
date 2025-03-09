@@ -87,7 +87,7 @@ const Header = () => {
                 variant="gold" 
                 size="lg" 
                 icon={<Phone size={20} />}
-                className="transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3)]"
+                className="transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3)] w-full sm:w-auto"
               >
                 Réservez un appel gratuit
               </ButtonCTA>

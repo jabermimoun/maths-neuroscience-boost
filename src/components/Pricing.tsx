@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
@@ -301,7 +300,7 @@ const Pricing = () => {
           </p>
           <div className="flex justify-center">
             <Link to="/reserver?type=diagnostic">
-              <ButtonCTA variant="gold" size="lg">
+              <ButtonCTA variant="gold" size="lg" className="text-xs sm:text-sm md:text-base px-4 w-full sm:w-auto">
                 Demander mon diagnostic gratuit
               </ButtonCTA>
             </Link>
@@ -313,7 +312,7 @@ const Pricing = () => {
             Tous les cours se déroulent à domicile pour un confort optimal.
           </p>
           <Link to="/reserver">
-            <ButtonCTA variant="gold" size="lg">
+            <ButtonCTA variant="gold" size="lg" className="w-full sm:w-auto text-sm sm:text-base">
               Je veux réserver mon premier cours
             </ButtonCTA>
           </Link>
