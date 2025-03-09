@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -132,25 +131,14 @@ const TestimonialsPage = () => {
             Tous les témoignages
           </h1>
           
-          <div className="flex gap-3">
-            <Button 
-              onClick={goToAdminPanel}
-              variant="outline"
-              className="border-vibrant-orange text-vibrant-orange hover:bg-vibrant-orange/10"
-            >
-              <Shield className="mr-2 h-4 w-4" />
-              Administration des avis
-            </Button>
-            
-            <Button 
-              onClick={() => setShowAddReviewForm(!showAddReviewForm)}
-              variant="default"
-              className="bg-[#FFD700] hover:bg-[#E5C100] text-black"
-            >
-              <MessageSquare className="mr-2 h-4 w-4" />
-              {showAddReviewForm ? 'Masquer le formulaire' : 'Ajouter votre avis'}
-            </Button>
-          </div>
+          <Button 
+            onClick={() => setShowAddReviewForm(!showAddReviewForm)}
+            variant="default"
+            className="bg-[#FFD700] hover:bg-[#E5C100] text-black"
+          >
+            <MessageSquare className="mr-2 h-4 w-4" />
+            {showAddReviewForm ? 'Masquer le formulaire' : 'Ajouter votre avis'}
+          </Button>
         </div>
         
         {showAddReviewForm && (
