@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -88,8 +89,21 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
         EMAILJS_PUBLIC_KEY
       );
       
-      // Store review in localStorage (simplified approach - in a real app this would go to a database)
-      const pendingReviews = JSON.parse(localStorage.getItem('pendingReviews') || '[]');
+      // Store review in localStorage with debugging
+      console.log('Storing new review in localStorage');
+      
+      // Retrieve existing pending reviews
+      let pendingReviews = [];
+      try {
+        const storedReviews = localStorage.getItem('pendingReviews');
+        pendingReviews = storedReviews ? JSON.parse(storedReviews) : [];
+        console.log('Retrieved existing pending reviews:', pendingReviews);
+      } catch (error) {
+        console.error('Error parsing pendingReviews from localStorage:', error);
+        pendingReviews = [];
+      }
+      
+      // Create new review object
       const newReview = {
         id: Date.now(),
         name: formData.name,
@@ -100,8 +114,14 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
         status: 'pending'
       };
       
+      console.log('New review object:', newReview);
+      
+      // Add new review to the pending reviews array
       pendingReviews.push(newReview);
+      
+      // Store updated pending reviews back to localStorage
       localStorage.setItem('pendingReviews', JSON.stringify(pendingReviews));
+      console.log('Updated pendingReviews in localStorage:', pendingReviews);
       
       // Success notification
       toast({

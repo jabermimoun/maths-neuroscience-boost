@@ -14,11 +14,25 @@ interface TestimonialsListProps {
   staticTestimonials: Testimonial[];
 }
 
-// Get approved reviews from localStorage (simplified approach - in a real app this would come from a database)
+// Get approved reviews from localStorage with better error handling
 const getApprovedReviews = (): Testimonial[] => {
   try {
-    const approvedReviews = JSON.parse(localStorage.getItem('approvedReviews') || '[]');
-    return approvedReviews;
+    console.log('TestimonialsList: Getting approved reviews from localStorage');
+    const storedData = localStorage.getItem('approvedReviews');
+    
+    if (!storedData) {
+      console.log('No approved reviews found in localStorage');
+      return [];
+    }
+    
+    try {
+      const approvedReviews = JSON.parse(storedData);
+      console.log('Found approved reviews:', approvedReviews);
+      return Array.isArray(approvedReviews) ? approvedReviews : [];
+    } catch (parseError) {
+      console.error('Error parsing approvedReviews from localStorage:', parseError);
+      return [];
+    }
   } catch (error) {
     console.error('Error loading approved reviews:', error);
     return [];
@@ -29,13 +43,32 @@ const TestimonialsList: React.FC<TestimonialsListProps> = ({ staticTestimonials 
   const [allTestimonials, setAllTestimonials] = useState<Testimonial[]>(staticTestimonials);
   
   useEffect(() => {
+    // Initial load of testimonials
+    loadTestimonials();
+    
+    // Set up event listener for storage changes
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [staticTestimonials]);
+  
+  const handleStorageChange = (e: StorageEvent) => {
+    if (e.key === 'approvedReviews') {
+      loadTestimonials();
+    }
+  };
+  
+  const loadTestimonials = () => {
     // Combine static testimonials with approved user testimonials
     const approvedReviews = getApprovedReviews();
     const combined = [...staticTestimonials, ...approvedReviews];
     
-    // Sort by most recent first if you have dates, or just use the order they're in
+    console.log('Combined testimonials:', combined);
     setAllTestimonials(combined);
-  }, [staticTestimonials]);
+  };
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

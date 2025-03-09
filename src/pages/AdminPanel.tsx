@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -39,31 +40,79 @@ const AdminPanel = () => {
 
   const loadReviews = () => {
     try {
-      const storedPending = JSON.parse(localStorage.getItem('pendingReviews') || '[]');
-      const storedApproved = JSON.parse(localStorage.getItem('approvedReviews') || '[]');
+      console.log('AdminPanel: Loading reviews from localStorage');
+      
+      // Pending reviews
+      const pendingData = localStorage.getItem('pendingReviews');
+      console.log('Raw pending reviews data:', pendingData);
+      let storedPending: Review[] = [];
+      
+      if (pendingData) {
+        try {
+          storedPending = JSON.parse(pendingData);
+          console.log('Parsed pending reviews:', storedPending);
+        } catch (e) {
+          console.error('Error parsing pending reviews:', e);
+          storedPending = [];
+        }
+      }
+      
+      // Approved reviews
+      const approvedData = localStorage.getItem('approvedReviews');
+      console.log('Raw approved reviews data:', approvedData);
+      let storedApproved: Review[] = [];
+      
+      if (approvedData) {
+        try {
+          storedApproved = JSON.parse(approvedData);
+          console.log('Parsed approved reviews:', storedApproved);
+        } catch (e) {
+          console.error('Error parsing approved reviews:', e);
+          storedApproved = [];
+        }
+      }
       
       setPendingReviews(storedPending);
       setApprovedReviews(storedApproved);
     } catch (error) {
       console.error('Error loading reviews from localStorage:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de charger les avis depuis le stockage local.",
+        variant: "destructive"
+      });
     }
   };
 
   const approveReview = (reviewId: number) => {
+    console.log('Approving review with ID:', reviewId);
     const reviewToApprove = pendingReviews.find(review => review.id === reviewId);
-    if (!reviewToApprove) return;
+    if (!reviewToApprove) {
+      console.error('Review not found:', reviewId);
+      return;
+    }
     
     const updatedPending = pendingReviews.filter(review => review.id !== reviewId);
     const updatedApproved = [...approvedReviews, { ...reviewToApprove, status: 'approved' }];
+    
+    console.log('Updated pending reviews:', updatedPending);
+    console.log('Updated approved reviews:', updatedApproved);
     
     setPendingReviews(updatedPending);
     setApprovedReviews(updatedApproved);
     
     localStorage.setItem('pendingReviews', JSON.stringify(updatedPending));
     localStorage.setItem('approvedReviews', JSON.stringify(updatedApproved));
+    
+    toast({
+      title: "Avis approuvé",
+      description: "L'avis a été approuvé et est maintenant visible sur le site.",
+    });
   };
 
   const deleteReview = (reviewId: number, isPending: boolean) => {
+    console.log(`Deleting ${isPending ? 'pending' : 'approved'} review with ID:`, reviewId);
+    
     if (isPending) {
       const updatedPending = pendingReviews.filter(review => review.id !== reviewId);
       setPendingReviews(updatedPending);
@@ -73,6 +122,11 @@ const AdminPanel = () => {
       setApprovedReviews(updatedApproved);
       localStorage.setItem('approvedReviews', JSON.stringify(updatedApproved));
     }
+    
+    toast({
+      title: "Avis supprimé",
+      description: "L'avis a été supprimé avec succès.",
+    });
   };
 
   const formatDate = (dateString: string) => {
@@ -96,6 +150,14 @@ const AdminPanel = () => {
     toast({
       title: "URL copiée",
       description: "L'URL du panneau d'administration a été copiée dans le presse-papier.",
+    });
+  };
+  
+  const refreshReviews = () => {
+    loadReviews();
+    toast({
+      title: "Actualisation",
+      description: "La liste des avis a été actualisée.",
     });
   };
 

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Star, MessageSquare, Check, X, Shield } from 'lucide-react';
+import { ArrowLeft, Star, MessageSquare, Check, X, Shield, RefreshCw } from 'lucide-react';
 import ReviewForm from '@/components/ReviewForm';
+import { useToast } from '@/hooks/use-toast';
 
 interface Testimonial {
   id: number;
@@ -15,6 +16,7 @@ interface Testimonial {
 
 const TestimonialsPage = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [showAdminSection, setShowAdminSection] = useState(false);
   const [showAddReviewForm, setShowAddReviewForm] = useState(false);
   const [pendingReviews, setPendingReviews] = useState<Testimonial[]>([]);
@@ -61,16 +63,56 @@ const TestimonialsPage = () => {
   ];
 
   useEffect(() => {
+    loadReviews();
+    
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+  
+  const handleStorageChange = (e: StorageEvent) => {
+    if (e.key === 'pendingReviews' || e.key === 'approvedReviews') {
+      loadReviews();
+    }
+  };
+  
+  const loadReviews = () => {
     try {
-      const storedPending = JSON.parse(localStorage.getItem('pendingReviews') || '[]');
-      const storedApproved = JSON.parse(localStorage.getItem('approvedReviews') || '[]');
+      console.log('TestimonialsPage: Loading reviews from localStorage');
+      
+      const pendingData = localStorage.getItem('pendingReviews');
+      console.log('Raw pending reviews data:', pendingData);
+      let storedPending: Testimonial[] = [];
+      
+      if (pendingData) {
+        try {
+          storedPending = JSON.parse(pendingData);
+          console.log('Parsed pending reviews:', storedPending);
+        } catch (e) {
+          console.error('Error parsing pending reviews:', e);
+          storedPending = [];
+        }
+      }
+      
+      const approvedData = localStorage.getItem('approvedReviews');
+      console.log('Raw approved reviews data:', approvedData);
+      let storedApproved: Testimonial[] = [];
+      
+      if (approvedData) {
+        try {
+          storedApproved = JSON.parse(approvedData);
+          console.log('Parsed approved reviews:', storedApproved);
+        } catch (e) {
+          console.error('Error parsing approved reviews:', e);
+          storedApproved = [];
+        }
+      }
       
       setPendingReviews(storedPending);
       setApprovedReviews(storedApproved);
     } catch (error) {
       console.error('Error loading reviews from localStorage:', error);
     }
-  }, []);
+  };
   
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -92,12 +134,14 @@ const TestimonialsPage = () => {
       setShowAdminSection(true);
       setIsPasswordPromptOpen(false);
       setAdminPassword("");
+      loadReviews();
     } else {
       alert("Mot de passe incorrect");
     }
   };
   
   const approveReview = (reviewId: number) => {
+    console.log('Approving review with ID:', reviewId);
     const reviewToApprove = pendingReviews.find(review => review.id === reviewId);
     if (!reviewToApprove) return;
     
@@ -109,6 +153,16 @@ const TestimonialsPage = () => {
     
     localStorage.setItem('pendingReviews', JSON.stringify(updatedPending));
     localStorage.setItem('approvedReviews', JSON.stringify(updatedApproved));
+    
+    window.dispatchEvent(new StorageEvent('storage', {
+      key: 'pendingReviews',
+      newValue: JSON.stringify(updatedPending)
+    }));
+    
+    toast({
+      title: "Avis approuvé",
+      description: "L'avis a été approuvé avec succès.",
+    });
   };
   
   const deleteReview = (reviewId: number, isPending: boolean) => {
@@ -121,10 +175,28 @@ const TestimonialsPage = () => {
       setApprovedReviews(updatedApproved);
       localStorage.setItem('approvedReviews', JSON.stringify(updatedApproved));
     }
+    
+    toast({
+      title: "Avis supprimé",
+      description: "L'avis a été supprimé avec succès.",
+    });
   };
 
   const goToAdminPanel = () => {
     navigate('/admin-panel');
+  };
+  
+  const handleReviewSubmitted = () => {
+    setShowAddReviewForm(false);
+    setTimeout(loadReviews, 500);
+  };
+  
+  const refreshReviews = () => {
+    loadReviews();
+    toast({
+      title: "Actualisation",
+      description: "La liste des avis a été actualisée.",
+    });
   };
 
   return (
@@ -156,7 +228,7 @@ const TestimonialsPage = () => {
         
         {showAddReviewForm && (
           <div className="mb-12 max-w-xl mx-auto">
-            <ReviewForm onReviewSubmitted={() => setShowAddReviewForm(false)} />
+            <ReviewForm onReviewSubmitted={handleReviewSubmitted} />
           </div>
         )}
         
@@ -304,6 +376,15 @@ const TestimonialsPage = () => {
             </div>
           ))}
         </div>
+        
+        <Button 
+          onClick={refreshReviews}
+          variant="outline"
+          className="mt-8"
+        >
+          <RefreshCw className="mr-2 h-4 w-4" />
+          Actualiser
+        </Button>
       </div>
     </div>
   );
