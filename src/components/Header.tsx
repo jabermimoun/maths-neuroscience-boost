@@ -1,21 +1,66 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ButtonCTA from './ButtonCTA';
 import { Phone, Pause, Play } from 'lucide-react';
 
+declare global {
+  interface Window {
+    onYouTubeIframeAPIReady: () => void;
+    YT: any;
+  }
+}
+
 const Header = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const playerRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Load YouTube API script
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+    // Create YouTube player when API is ready
+    window.onYouTubeIframeAPIReady = () => {
+      if (!containerRef.current) return;
+      
+      playerRef.current = new window.YT.Player(containerRef.current, {
+        videoId: 'CxiHC4P6q80',
+        playerVars: {
+          autoplay: 0,
+          controls: 1,
+          rel: 0,
+          showinfo: 0,
+          mute: 0,
+          modestbranding: 1
+        },
+        events: {
+          onStateChange: (event: any) => {
+            setIsPlaying(event.data === window.YT.PlayerState.PLAYING);
+          }
+        }
+      });
+    };
+
+    return () => {
+      // Clean up
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
+      window.onYouTubeIframeAPIReady = () => {};
+    };
+  }, []);
 
   const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (!playerRef.current) return;
+    
+    if (isPlaying) {
+      playerRef.current.pauseVideo();
+    } else {
+      playerRef.current.playVideo();
     }
   };
 
@@ -47,15 +92,18 @@ const Header = () => {
           </div>
           
           <div className="relative animate-fade-in-right">
-            <div className="aspect-video bg-black/20 rounded-lg overflow-hidden video-overlay group cursor-pointer shadow-xl">
-              <iframe 
-                className="w-full h-full object-cover"
-                src="https://www.youtube.com/embed/CxiHC4P6q80?enablejsapi=1"
-                title="Vidéo de présentation"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+            <div className="aspect-video bg-black/20 rounded-lg overflow-hidden video-overlay group shadow-xl">
+              <div className="w-full h-full" ref={containerRef}></div>
+              <div 
+                className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
+                onClick={togglePlay}
+              >
+                {!isPlaying && (
+                  <div className="w-20 h-20 bg-white/80 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 pointer-events-auto cursor-pointer">
+                    <Play size={30} className="ml-2 text-vibrant-orange" />
+                  </div>
+                )}
+              </div>
             </div>
             <div className="absolute -bottom-4 -right-4 bg-vibrant-orange text-white py-2 px-4 rounded-md shadow-lg">
               Vidéo explicative
