@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Star, MessageSquare, Check, X } from 'lucide-react';
+import { ArrowLeft, Star, MessageSquare, Check, X, Shield } from 'lucide-react';
 import ReviewForm from '@/components/ReviewForm';
 
 interface Testimonial {
@@ -111,6 +111,10 @@ const TestimonialsPage = () => {
     }
   };
 
+  const goToAdminPanel = () => {
+    navigate('/admin');
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F5F5] py-20">
       <div className="container px-6 lg:px-8">
@@ -128,14 +132,25 @@ const TestimonialsPage = () => {
             Tous les témoignages
           </h1>
           
-          <Button 
-            onClick={() => setShowAddReviewForm(!showAddReviewForm)}
-            variant="default"
-            className="bg-[#FFD700] hover:bg-[#E5C100] text-black"
-          >
-            <MessageSquare className="mr-2 h-4 w-4" />
-            {showAddReviewForm ? 'Masquer le formulaire' : 'Ajouter votre avis'}
-          </Button>
+          <div className="flex gap-3">
+            <Button 
+              onClick={goToAdminPanel}
+              variant="outline"
+              className="border-vibrant-orange text-vibrant-orange hover:bg-vibrant-orange/10"
+            >
+              <Shield className="mr-2 h-4 w-4" />
+              Administration des avis
+            </Button>
+            
+            <Button 
+              onClick={() => setShowAddReviewForm(!showAddReviewForm)}
+              variant="default"
+              className="bg-[#FFD700] hover:bg-[#E5C100] text-black"
+            >
+              <MessageSquare className="mr-2 h-4 w-4" />
+              {showAddReviewForm ? 'Masquer le formulaire' : 'Ajouter votre avis'}
+            </Button>
+          </div>
         </div>
         
         {showAddReviewForm && (
@@ -147,7 +162,17 @@ const TestimonialsPage = () => {
         {/* Admin Section (hidden by default, revealed with ctrl+shift+A) */}
         {showAdminSection && (
           <div className="mb-12 bg-gray-100 p-6 rounded-lg border-2 border-red-300">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">Section Admin</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold text-red-600">Section Admin</h2>
+              <Button
+                onClick={goToAdminPanel}
+                variant="outline"
+                className="border-vibrant-orange text-vibrant-orange hover:bg-vibrant-orange/10"
+              >
+                <Shield className="mr-2 h-4 w-4" />
+                Aller au panneau d'administration complet
+              </Button>
+            </div>
             
             {pendingReviews.length > 0 ? (
               <>

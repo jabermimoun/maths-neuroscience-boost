@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Star, Check, X, Shield } from 'lucide-react';
+import { ArrowLeft, Star, Check, X, Shield, Copy } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface Review {
   id: number;
@@ -16,6 +17,7 @@ interface Review {
 
 const AdminPanel = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [pendingReviews, setPendingReviews] = useState<Review[]>([]);
   const [approvedReviews, setApprovedReviews] = useState<Review[]>([]);
   
@@ -73,6 +75,15 @@ const AdminPanel = () => {
     }
   };
 
+  const copyAdminUrl = () => {
+    const currentUrl = window.location.href;
+    navigator.clipboard.writeText(currentUrl);
+    toast({
+      title: "URL copiée",
+      description: "L'URL du panneau d'administration a été copiée dans le presse-papier.",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F5F5] py-20">
       <div className="container px-6 lg:px-8">
@@ -89,6 +100,28 @@ const AdminPanel = () => {
             <Shield className="mr-2 h-6 w-6 text-vibrant-orange" />
             Panneau d'administration
           </h1>
+        </div>
+        
+        <div className="bg-blue-50 rounded-lg p-5 text-blue-700 mb-8">
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="font-bold text-lg mb-2">Accès rapide à ce panneau</h3>
+              <p className="mb-2">Vous pouvez accéder à ce panneau de trois façons :</p>
+              <ul className="list-disc pl-5 space-y-1 mb-3">
+                <li>En visitant directement cette URL</li>
+                <li>Via le bouton "Administration des avis" sur la page des témoignages</li>
+                <li>En utilisant le raccourci <kbd className="px-2 py-1 bg-white rounded border border-blue-300">Ctrl+Shift+A</kbd> sur la page des témoignages</li>
+              </ul>
+            </div>
+            <Button 
+              onClick={copyAdminUrl}
+              variant="outline" 
+              className="text-blue-600 border-blue-300 hover:bg-blue-100"
+            >
+              <Copy size={16} className="mr-2" />
+              Copier l'URL
+            </Button>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -207,7 +240,7 @@ const AdminPanel = () => {
           <ul className="list-disc pl-5 space-y-1">
             <li>Les avis approuvés sont affichés publiquement sur le site.</li>
             <li>Les avis refusés sont définitivement supprimés.</li>
-            <li>Vous recevez une notification par email à chaque nouvel avis.</li>
+            <li>Vous recevez une notification par email à chaque nouvel avis avec un lien direct vers cette page.</li>
             <li>Pour accéder rapidement à ce panneau, utilisez Ctrl+Shift+A depuis la page des témoignages.</li>
           </ul>
         </div>

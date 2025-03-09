@@ -65,6 +65,10 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
     }
     
     try {
+      // Get the current domain for the admin link
+      const currentDomain = window.location.origin;
+      const adminUrl = `${currentDomain}/admin`;
+      
       // Send email notification to admin
       const templateParams = {
         from_name: formData.name,
@@ -74,7 +78,8 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
         to_name: 'Maths Réussite Academy',
         to_email: 'mathsreussiteacademy@hotmail.com',
         subject: `Nouvel avis client - ${formData.name}`,
-        message: `Un nouvel avis a été soumis par ${formData.name} (${formData.relation}). Note: ${rating}/5. Avis: ${formData.review}`
+        message: `Un nouvel avis a été soumis par ${formData.name} (${formData.relation}). Note: ${rating}/5. Avis: ${formData.review}`,
+        admin_link: `Pour valider ou refuser cet avis, veuillez vous rendre sur votre espace d'administration: ${adminUrl}`
       };
       
       await emailjs.send(
