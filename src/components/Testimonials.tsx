@@ -69,7 +69,7 @@ const Testimonials = () => {
           "name": testimonial.name
         },
         "reviewBody": testimonial.content,
-        "datePublished": new Date().toISOString().split('T')[0] // Format: YYYY-MM-DD
+        "datePublished": new Date().toISOString().split('T')[0]
       }))
     };
 
