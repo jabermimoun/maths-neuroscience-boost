@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
@@ -41,6 +40,43 @@ const Testimonials = () => {
   const handleReviewSubmitted = () => {
     setShowReviewForm(false);
   };
+
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Maths Réussite Academy",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": staticTestimonials.length.toString(),
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": staticTestimonials.map(testimonial => ({
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": testimonial.rating.toString(),
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": testimonial.name
+        },
+        "reviewBody": testimonial.content
+      }))
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <section className="py-20 bg-soft-blue" id="temoignages">

@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import ButtonCTA from './ButtonCTA';
@@ -29,6 +28,34 @@ const Blog = () => {
       date: "18 mars 2023"
     }
   ];
+
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog Maths Réussite Academy",
+      "blogPost": articles.map(article => ({
+        "@type": "BlogPosting",
+        "headline": article.title,
+        "description": article.excerpt,
+        "image": article.imageUrl,
+        "datePublished": article.date,
+        "author": {
+          "@type": "Organization",
+          "name": "Maths Réussite Academy"
+        }
+      }))
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <section className="py-20 bg-pale-blue" id="blog">
