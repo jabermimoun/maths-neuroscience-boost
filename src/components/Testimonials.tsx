@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
@@ -46,6 +47,8 @@ const Testimonials = () => {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Maths Réussite Academy",
+      "url": "https://profparticuliermaths.com",
+      "description": "Cours particuliers de mathématiques à Bruxelles - Méthode basée sur les neurosciences",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
@@ -58,13 +61,15 @@ const Testimonials = () => {
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": testimonial.rating.toString(),
-          "bestRating": "5"
+          "bestRating": "5",
+          "worstRating": "1"
         },
         "author": {
           "@type": "Person",
           "name": testimonial.name
         },
-        "reviewBody": testimonial.content
+        "reviewBody": testimonial.content,
+        "datePublished": new Date().toISOString().split('T')[0] // Format: YYYY-MM-DD
       }))
     };
 

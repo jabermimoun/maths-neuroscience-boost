@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
@@ -34,16 +35,35 @@ const Blog = () => {
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "Blog Maths Réussite Academy",
+      "url": "https://profparticuliermaths.com/blog",
+      "description": "Ressources et conseils gratuits pour progresser en mathématiques",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maths Réussite Academy",
+        "url": "https://profparticuliermaths.com"
+      },
       "blogPost": articles.map(article => ({
         "@type": "BlogPosting",
         "headline": article.title,
         "description": article.excerpt,
         "image": article.imageUrl,
         "datePublished": article.date,
+        "dateModified": article.date,
         "author": {
           "@type": "Organization",
-          "name": "Maths Réussite Academy"
-        }
+          "name": "Maths Réussite Academy",
+          "url": "https://profparticuliermaths.com"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Maths Réussite Academy",
+          "url": "https://profparticuliermaths.com"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://profparticuliermaths.com/blog/${article.id}`
+        },
+        "keywords": "mathématiques, cours particuliers, méthode, apprentissage, réussite scolaire"
       }))
     };
 
