@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
 import WhyDifferent from '@/components/WhyDifferent';
@@ -13,6 +14,8 @@ import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  const navigate = useNavigate();
+
   // Intersection Observer for scroll animations
   useEffect(() => {
     const observerOptions = {
@@ -39,6 +42,24 @@ const Index = () => {
       observer.disconnect();
     };
   }, []);
+
+  // Admin panel keyboard shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+        e.preventDefault();
+        const password = prompt("Mot de passe administrateur:");
+        if (password === "fidoivi") {
+          navigate('/admin-panel');
+        } else if (password !== null) {
+          alert("Mot de passe incorrect");
+        }
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [navigate]);
 
   return (
     <div className="min-h-screen antialiased">
