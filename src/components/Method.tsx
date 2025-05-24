@@ -16,119 +16,111 @@ const Method = () => {
           center
         />
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 lg:mb-16">
-          <div className="space-y-4 md:space-y-6">
-            <div className="bg-pale-blue rounded-xl p-4 md:p-6 shadow-sm flex gap-3 md:gap-4 card-hover">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="space-y-6">
+            <div className="bg-pale-blue rounded-xl p-6 shadow-sm flex gap-4 card-hover">
               <div className="shrink-0">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-dark-blue rounded-lg flex items-center justify-center">
-                  <Brain size={20} className="text-white md:w-6 md:h-6" />
+                <div className="w-12 h-12 bg-dark-blue rounded-lg flex items-center justify-center">
+                  <Brain size={24} className="text-white" />
                 </div>
               </div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-1 md:mb-2">
-                  <span className="block md:hidden">🧠 Comprendre</span>
-                  <span className="hidden md:block">Comprendre avant de mémoriser</span>
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  <span className="block md:hidden">Fini le par cœur. Vraie compréhension.</span>
-                  <span className="hidden md:block">Fini l'apprentissage "par cœur" qui ne fonctionne pas. Mon approche permet de réellement comprendre les concepts.</span>
+                <h3 className="text-xl font-bold text-dark-blue mb-2">Comprendre avant de mémoriser</h3>
+                <p className="text-gray-600">
+                  Fini l'apprentissage "par cœur" qui ne fonctionne pas. Mon approche permet de réellement comprendre les concepts.
                 </p>
               </div>
             </div>
             
-            <div className="bg-pale-blue rounded-xl p-4 md:p-6 shadow-sm flex gap-3 md:gap-4 card-hover">
+            <div className="bg-pale-blue rounded-xl p-6 shadow-sm flex gap-4 card-hover">
               <div className="shrink-0">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-dark-blue rounded-lg flex items-center justify-center">
-                  <Target size={20} className="text-white md:w-6 md:h-6" />
+                <div className="w-12 h-12 bg-dark-blue rounded-lg flex items-center justify-center">
+                  <Target size={24} className="text-white" />
                 </div>
               </div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-1 md:mb-2">
-                  <span className="block md:hidden">🎯 Stratégies</span>
-                  <span className="hidden md:block">Stratégies d'examen éprouvées</span>
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  <span className="block md:hidden">Anti-stress + méthodes rapides.</span>
-                  <span className="hidden md:block">Gestion du stress, méthodes de résolution rapides et efficaces pour optimiser vos performances.</span>
+                <h3 className="text-xl font-bold text-dark-blue mb-2">Stratégies d'examen éprouvées</h3>
+                <p className="text-gray-600">
+                  Gestion du stress, méthodes de résolution rapides et efficaces pour optimiser vos performances.
                 </p>
               </div>
             </div>
             
-            <div className="bg-pale-blue rounded-xl p-4 md:p-6 shadow-sm flex gap-3 md:gap-4 card-hover">
+            <div className="bg-pale-blue rounded-xl p-6 shadow-sm flex gap-4 card-hover">
               <div className="shrink-0">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-dark-blue rounded-lg flex items-center justify-center">
-                  <TrendingUp size={20} className="text-white md:w-6 md:h-6" />
+                <div className="w-12 h-12 bg-dark-blue rounded-lg flex items-center justify-center">
+                  <TrendingUp size={24} className="text-white" />
                 </div>
               </div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-1 md:mb-2">
-                  <span className="block md:hidden">📈 +50% en 2 mois</span>
-                  <span className="hidden md:block">Progression garantie</span>
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  <span className="block md:hidden">Mes élèves : +30 à 50% de notes.</span>
-                  <span className="hidden md:block">En moyenne, mes élèves voient une augmentation de 30 à 50% de leur note après seulement 2 mois de suivi régulier.</span>
+                <h3 className="text-xl font-bold text-dark-blue mb-2">Progression garantie</h3>
+                <p className="text-gray-600">
+                  En moyenne, mes élèves voient une augmentation de 30 à 50% de leur note après seulement 2 mois de suivi régulier.
                 </p>
               </div>
             </div>
           </div>
           
           <div className="relative">
-            <div className="bg-white rounded-lg p-4 md:p-6 shadow-xl border border-gray-100">
-              <h3 className="text-xl md:text-2xl font-bold text-dark-blue mb-4 md:mb-6 text-center">
-                <span className="block md:hidden">📊 Évolution</span>
-                <span className="hidden md:block">Évolution moyenne des notes</span>
-              </h3>
+            <div className="bg-white rounded-lg p-6 shadow-xl border border-gray-100">
+              <h3 className="text-2xl font-bold text-dark-blue mb-6 text-center">Évolution moyenne des notes</h3>
               
-              <div className="h-48 md:h-64 relative">
-                <div className="absolute bottom-0 left-0 w-full h-full flex items-end justify-center gap-4 md:gap-8">
-                  <div className="w-20 md:w-1/3 bg-light-blue h-[30%] relative group">
-                    <div className="absolute -top-6 md:-top-8 left-1/2 transform -translate-x-1/2 bg-dark-blue text-white rounded px-2 py-1 text-xs md:text-sm">
+              <div className="h-64 relative">
+                {/* Simplified chart representation */}
+                <div className="absolute bottom-0 left-0 w-full h-full flex items-end">
+                  <div className="w-1/3 bg-light-blue h-[30%] mr-8 relative group">
+                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-dark-blue text-white rounded px-2 py-1 text-sm">
                       8/20
                     </div>
-                    <div className="absolute -bottom-6 md:-bottom-8 left-1/2 transform -translate-x-1/2 text-dark-blue font-medium text-xs md:text-base">
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-dark-blue font-medium">
                       Avant
                     </div>
                   </div>
-                  <div className="w-20 md:w-1/3 bg-vibrant-orange h-[60%] relative group">
-                    <div className="absolute -top-6 md:-top-8 left-1/2 transform -translate-x-1/2 bg-vibrant-orange text-white rounded px-2 py-1 text-xs md:text-sm">
+                  <div className="w-1/3 bg-vibrant-orange h-[60%] relative group">
+                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-vibrant-orange text-white rounded px-2 py-1 text-sm">
                       14/20
                     </div>
-                    <div className="absolute -bottom-6 md:-bottom-8 left-1/2 transform -translate-x-1/2 text-dark-blue font-medium text-xs md:text-base">
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-dark-blue font-medium">
                       Après
                     </div>
                   </div>
                 </div>
                 
-                <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 bg-dark-blue text-white rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center text-base md:text-lg font-bold">
+                {/* Arrow showing growth */}
+                <div className="absolute top-1/2 left-1/4 transform -translate-y-1/2 text-vibrant-orange rotate-45">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </div>
+                
+                {/* Percentage indicator */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 bg-dark-blue text-white rounded-full w-16 h-16 flex items-center justify-center text-lg font-bold">
                   +50%
                 </div>
               </div>
               
-              <div className="mt-6 md:mt-8 text-center">
-                <p className="text-xs md:text-base text-gray-600 italic">
-                  <span className="block md:hidden">Après 2 mois</span>
-                  <span className="hidden md:block">Résultats constatés après 2 mois de suivi régulier</span>
+              <div className="mt-8 text-center">
+                <p className="text-gray-600 italic">
+                  Résultats constatés après 2 mois de suivi régulier
                 </p>
               </div>
             </div>
             
-            <div className="absolute -bottom-4 -right-4 bg-vibrant-orange text-white py-2 px-3 md:px-4 rounded-md shadow-lg">
-              <span className="text-xs md:text-sm">Progression garantie</span>
+            <div className="absolute -bottom-4 -right-4 bg-vibrant-orange text-white py-2 px-4 rounded-md shadow-lg">
+              Progression garantie
             </div>
           </div>
         </div>
         
         <div className="text-center">
-          <Link to="/reserver" className="block md:inline-block">
+          <Link to="/reserver">
             <ButtonCTA 
               variant="gold" 
               size="lg" 
               icon={<Phone size={20} />}
-              className="w-full md:w-auto py-6 text-lg font-bold"
             >
-              <span className="block md:hidden">Bilan gratuit !</span>
-              <span className="hidden md:block">Prendre rendez-vous pour un bilan gratuit</span>
+              Prendre rendez-vous pour un bilan gratuit
             </ButtonCTA>
           </Link>
         </div>

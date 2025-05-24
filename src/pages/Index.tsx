@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Header from '@/components/Header';
@@ -36,40 +37,6 @@ const Index = () => {
 
     return () => {
       observer.disconnect();
-    };
-  }, []);
-
-  // Add Schema.org data for the organization
-  useEffect(() => {
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "Maths Réussite Academy",
-      "description": "Cours particuliers de mathématiques à Bruxelles avec une méthode basée sur les neurosciences",
-      "url": "https://profparticuliermaths.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Bruxelles",
-        "addressCountry": "BE"
-      },
-      "telephone": "+32488131219",
-      "email": "mathsreussiteacademy@hotmail.com",
-      "areaServed": "Bruxelles et périphérie",
-      "teaches": ["Mathématiques", "Méthodes d'apprentissage", "Préparation aux examens"],
-      "knowsAbout": ["Neurosciences de l'apprentissage", "Pédagogie différenciée", "Mathématiques"],
-      "sameAs": [
-        "https://www.facebook.com/mathsreussiteacademy",
-        "https://www.linkedin.com/company/maths-reussite-academy"
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(schema);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
     };
   }, []);
 
