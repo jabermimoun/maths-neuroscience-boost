@@ -22,19 +22,22 @@ const WhyDifferent = () => {
             <ul className="space-y-2 md:space-y-3">
               <li className="flex items-start">
                 <span className="text-vibrant-orange mr-2 text-lg">•</span>
-                <p className="text-sm md:text-base">Vous comprenez en classe, mais les notes ne suivent pas ?</p>
+                <p className="text-sm md:text-base">
+                  <span className="block md:hidden">Notes qui ne suivent pas ?</span>
+                  <span className="hidden md:block">Vous comprenez en classe, mais les notes ne suivent pas ?</span>
+                </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange mr-2 text-lg">•</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden">Stress et manque de confiance aux examens ?</span>
+                  <span className="block md:hidden">Stress aux examens ?</span>
                   <span className="hidden md:block">Vous sentez du stress et un manque de confiance face aux exercices et aux examens ?</span>
                 </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange mr-2 text-lg">•</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden">L'impression d'avoir "trop de lacunes" ?</span>
+                  <span className="block md:hidden">Trop de lacunes ?</span>
                   <span className="hidden md:block">Vous avez l'impression d'avoir "des lacunes trop grandes" pour vous en sortir ?</span>
                 </p>
               </li>
@@ -46,49 +49,49 @@ const WhyDifferent = () => {
               <span className="inline-block w-6 h-6 md:w-8 md:h-8 bg-vibrant-orange text-white rounded-full flex items-center justify-center mr-2 md:mr-3 text-sm md:text-base">
                 💡
               </span>
-              <span className="block md:hidden">Il existe une solution efficace !</span>
+              <span className="block md:hidden">Solution efficace !</span>
               <span className="hidden md:block">Bonne nouvelle : Il existe une solution efficace, et elle est basée sur la science !</span>
             </p>
           </div>
 
           <div className="mt-8 bg-white rounded-lg p-4 md:p-6 shadow-md border border-gray-200">
-            <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-3 md:mb-4">🔬 Pourquoi notre méthode fonctionne ?</h3>
+            <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-3 md:mb-4">🔬 Pourquoi ça marche ?</h3>
             <p className="text-base md:text-lg mb-3 md:mb-4 font-medium">
-              <span className="block md:hidden">💡 Les neurosciences = résultats rapides !</span>
+              <span className="block md:hidden">💡 Neurosciences = résultats !</span>
               <span className="hidden md:block">💡 Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</span>
             </p>
             <ul className="space-y-2 md:space-y-3">
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden"><strong>Répétition espacée</strong> → Mémorisation longue durée</span>
+                  <span className="block md:hidden"><strong>Répétition espacée</strong> → Mémoire longue</span>
                   <span className="hidden md:block">Technique de la répétition espacée → Mémorisation longue durée garantie</span>
                 </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden"><strong>Apprentissage actif</strong> → 80% plus efficace</span>
+                  <span className="block md:hidden"><strong>Apprentissage actif</strong> → +80% efficace</span>
                   <span className="hidden md:block">Apprentissage actif (active recall) → L'élève retient 80% mieux qu'avec une simple lecture</span>
                 </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden"><strong>Méthodes anti-stress</strong> → Boost concentration</span>
+                  <span className="block md:hidden"><strong>Anti-stress</strong> → +Concentration</span>
                   <span className="hidden md:block">Méthodes anti-stress → Boost de la concentration et réduction de l'anxiété avant les examens</span>
                 </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden"><strong>Optimisation cerveau</strong> → Sommeil + motivation</span>
+                  <span className="block md:hidden"><strong>Optimisation cerveau</strong> → Performance</span>
                   <span className="hidden md:block">Optimisation du cerveau avec la gestion du sommeil et de la motivation</span>
                 </p>
               </li>
             </ul>
             <p className="text-base md:text-lg font-bold text-dark-blue mt-3 md:mt-4">
-              <span className="block md:hidden">📢 Travaillez PLUS INTELLIGEMMENT !</span>
+              <span className="block md:hidden">📢 Travaillez INTELLIGENT !</span>
               <span className="hidden md:block">📢 Votre enfant n'a pas besoin de travailler plus, mais de travailler PLUS INTELLIGEMMENT !</span>
             </p>
           </div>
@@ -100,11 +103,11 @@ const WhyDifferent = () => {
               <Brain size={24} className="text-dark-blue md:w-8 md:h-8" />
             </div>
             <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
-              <span className="block md:hidden">🧠 Neurosciences appliquées</span>
+              <span className="block md:hidden">🧠 Science appliquée</span>
               <span className="hidden md:block">Approche basée sur les neurosciences</span>
             </h3>
             <p className="text-sm md:text-base text-gray-600">
-              <span className="block md:hidden">Double expertise : Professeur + ingénieur pour une pédagogie avancée et logique rigoureuse.</span>
+              <span className="block md:hidden">Prof + Ingénieur = pédagogie avancée + logique rigoureuse.</span>
               <span className="hidden md:block">Une double expertise : Professeur en école renommée et ingénieur, je combine pédagogie avancée et logique mathématique rigoureuse.</span>
             </p>
           </div>
@@ -114,11 +117,11 @@ const WhyDifferent = () => {
               <Target size={24} className="text-dark-blue md:w-8 md:h-8" />
             </div>
             <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
-              <span className="block md:hidden">🎯 Suivi 100% personnalisé</span>
+              <span className="block md:hidden">🎯 Sur-mesure</span>
               <span className="hidden md:block">Suivi personnalisé et stratégies efficaces</span>
             </h3>
             <p className="text-sm md:text-base text-gray-600">
-              <span className="block md:hidden">Méthode unique basée sur les neurosciences. J'adapte mon approche à chaque élève.</span>
+              <span className="block md:hidden">Méthode unique adaptée à chaque élève.</span>
               <span className="hidden md:block">Une méthode unique : Basée sur les neurosciences et la psychologie cognitive, j'adapte mon approche à chaque élève pour une progression rapide et durable.</span>
             </p>
           </div>
@@ -128,11 +131,11 @@ const WhyDifferent = () => {
               <Rocket size={24} className="text-dark-blue md:w-8 md:h-8" />
             </div>
             <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
-              <span className="block md:hidden">🚀 Résultats garantis</span>
+              <span className="block md:hidden">🚀 Garantis</span>
               <span className="hidden md:block">Résultats rapides et concrets</span>
             </h3>
             <p className="text-sm md:text-base text-gray-600">
-              <span className="block md:hidden">+30 à 50% de moyenne après 2 mois de suivi régulier.</span>
+              <span className="block md:hidden">+30 à 50% en 2 mois.</span>
               <span className="hidden md:block">Des résultats concrets : Mes élèves constatent une amélioration de 30 à 50% de leur moyenne après seulement 2 mois de suivi régulier.</span>
             </p>
           </div>
@@ -144,9 +147,9 @@ const WhyDifferent = () => {
               variant="gold" 
               size="lg" 
               icon={<Phone size={20} />}
-              className="w-full md:w-auto py-4 md:py-6"
+              className="w-full md:w-auto py-6 text-lg font-bold"
             >
-              <span className="block md:hidden">Tester cette méthode !</span>
+              <span className="block md:hidden">Tester !</span>
               <span className="hidden md:block">Je veux tester cette méthode !</span>
             </ButtonCTA>
           </Link>

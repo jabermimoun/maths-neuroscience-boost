@@ -25,11 +25,11 @@ const Booking = () => {
                 <span className="text-white font-bold text-sm md:text-base">1</span>
               </div>
               <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
-                <span className="block md:hidden">📅 Choisir un créneau</span>
+                <span className="block md:hidden">📅 Créneau</span>
                 <span className="hidden md:block">Choisissez votre créneau</span>
               </h3>
               <p className="text-sm md:text-base text-gray-600">
-                <span className="block md:hidden">Sélectionnez un horaire dans le calendrier en ligne.</span>
+                <span className="block md:hidden">Sélectionnez un horaire en ligne.</span>
                 <span className="hidden md:block">Sélectionnez un horaire qui vous convient dans le calendrier en ligne.</span>
               </p>
             </div>
@@ -42,11 +42,11 @@ const Booking = () => {
                 <span className="text-white font-bold text-sm md:text-base">2</span>
               </div>
               <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
-                <span className="block md:hidden">📞 Diagnostic rapide</span>
+                <span className="block md:hidden">📞 Diagnostic</span>
                 <span className="hidden md:block">Appelez-moi pour un diagnostic rapide</span>
               </h3>
               <p className="text-sm md:text-base text-gray-600">
-                <span className="block md:hidden">15 minutes pour identifier vos besoins et confirmer la compatibilité.</span>
+                <span className="block md:hidden">15 min pour analyser vos besoins.</span>
                 <span className="hidden md:block">Un appel de 15 minutes pour identifier vos besoins et confirmer la compatibilité.</span>
               </p>
             </div>
@@ -63,7 +63,7 @@ const Booking = () => {
                 <span className="hidden md:block">Commencez à progresser immédiatement !</span>
               </h3>
               <p className="text-sm md:text-base text-gray-600">
-                <span className="block md:hidden">Démarrez votre accompagnement et constatez les progrès.</span>
+                <span className="block md:hidden">Démarrez et constatez les progrès.</span>
                 <span className="hidden md:block">Démarrez votre accompagnement et constatez rapidement les progrès.</span>
               </p>
             </div>
@@ -75,7 +75,7 @@ const Booking = () => {
                 variant="gold" 
                 size="lg" 
                 icon={<Phone size={20} />}
-                className="animate-pulse-subtle w-full md:w-auto py-4 md:py-6 text-center"
+                className="animate-pulse-subtle w-full md:w-auto py-6 text-lg font-bold"
               >
                 <span className="block md:hidden">Appel découverte</span>
                 <span className="hidden md:block">Réserver un appel découverte</span>
@@ -85,11 +85,11 @@ const Booking = () => {
           
           <div className="bg-dark-blue text-white p-6 md:p-8 rounded-lg shadow-lg">
             <div className="text-center mb-6 md:mb-8">
-              <h3 className="text-xl md:text-2xl font-bold mb-2">⏰ Vous hésitez encore ?</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-2">⏰ Vous hésitez ?</h3>
               <p className="text-white/80 text-sm md:text-base">
                 <span className="block md:hidden">
-                  Chaque semaine sans solution = plus de retard !<br />
-                  Offrez les moyens de réussir dès aujourd'hui.
+                  Chaque semaine = plus de retard !<br />
+                  Agissez aujourd'hui.
                 </span>
                 <span className="hidden md:block">
                   Chaque semaine sans solution, c'est du retard qui s'accumule !<br />
@@ -103,7 +103,7 @@ const Booking = () => {
                 <ButtonCTA 
                   variant="gold" 
                   size="lg"
-                  className="w-full md:w-auto py-4 md:py-6 text-center"
+                  className="w-full md:w-auto py-6 text-lg font-bold"
                 >
                   <span className="block md:hidden">Premier cours</span>
                   <span className="hidden md:block">Réserver mon premier cours</span>

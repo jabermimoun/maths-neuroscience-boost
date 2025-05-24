@@ -26,11 +26,11 @@ const Method = () => {
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-1 md:mb-2">
-                  <span className="block md:hidden">🧠 Comprendre d'abord</span>
+                  <span className="block md:hidden">🧠 Comprendre</span>
                   <span className="hidden md:block">Comprendre avant de mémoriser</span>
                 </h3>
                 <p className="text-sm md:text-base text-gray-600">
-                  <span className="block md:hidden">Fini l'apprentissage "par cœur". Mon approche permet de vraiment comprendre.</span>
+                  <span className="block md:hidden">Fini le par cœur. Vraie compréhension.</span>
                   <span className="hidden md:block">Fini l'apprentissage "par cœur" qui ne fonctionne pas. Mon approche permet de réellement comprendre les concepts.</span>
                 </p>
               </div>
@@ -44,11 +44,11 @@ const Method = () => {
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-1 md:mb-2">
-                  <span className="block md:hidden">🎯 Stratégies d'examen</span>
+                  <span className="block md:hidden">🎯 Stratégies</span>
                   <span className="hidden md:block">Stratégies d'examen éprouvées</span>
                 </h3>
                 <p className="text-sm md:text-base text-gray-600">
-                  <span className="block md:hidden">Gestion du stress, méthodes rapides pour optimiser vos performances.</span>
+                  <span className="block md:hidden">Anti-stress + méthodes rapides.</span>
                   <span className="hidden md:block">Gestion du stress, méthodes de résolution rapides et efficaces pour optimiser vos performances.</span>
                 </p>
               </div>
@@ -62,11 +62,11 @@ const Method = () => {
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-1 md:mb-2">
-                  <span className="block md:hidden">📈 +30-50% en 2 mois</span>
+                  <span className="block md:hidden">📈 +50% en 2 mois</span>
                   <span className="hidden md:block">Progression garantie</span>
                 </h3>
                 <p className="text-sm md:text-base text-gray-600">
-                  <span className="block md:hidden">Mes élèves voient une augmentation de 30 à 50% de leur note après 2 mois.</span>
+                  <span className="block md:hidden">Mes élèves : +30 à 50% de notes.</span>
                   <span className="hidden md:block">En moyenne, mes élèves voient une augmentation de 30 à 50% de leur note après seulement 2 mois de suivi régulier.</span>
                 </p>
               </div>
@@ -76,7 +76,7 @@ const Method = () => {
           <div className="relative">
             <div className="bg-white rounded-lg p-4 md:p-6 shadow-xl border border-gray-100">
               <h3 className="text-xl md:text-2xl font-bold text-dark-blue mb-4 md:mb-6 text-center">
-                <span className="block md:hidden">📊 Évolution des notes</span>
+                <span className="block md:hidden">📊 Évolution</span>
                 <span className="hidden md:block">Évolution moyenne des notes</span>
               </h3>
               
@@ -107,7 +107,7 @@ const Method = () => {
               
               <div className="mt-6 md:mt-8 text-center">
                 <p className="text-xs md:text-base text-gray-600 italic">
-                  <span className="block md:hidden">Résultats après 2 mois</span>
+                  <span className="block md:hidden">Après 2 mois</span>
                   <span className="hidden md:block">Résultats constatés après 2 mois de suivi régulier</span>
                 </p>
               </div>
@@ -125,9 +125,9 @@ const Method = () => {
               variant="gold" 
               size="lg" 
               icon={<Phone size={20} />}
-              className="w-full md:w-auto py-4 md:py-6"
+              className="w-full md:w-auto py-6 text-lg font-bold"
             >
-              <span className="block md:hidden">Bilan gratuit</span>
+              <span className="block md:hidden">Bilan gratuit !</span>
               <span className="hidden md:block">Prendre rendez-vous pour un bilan gratuit</span>
             </ButtonCTA>
           </Link>

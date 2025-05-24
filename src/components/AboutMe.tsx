@@ -34,19 +34,19 @@ const AboutMe = () => {
             
             <div className="space-y-4 md:space-y-6 text-dark-blue/90">
               <p className="text-base md:text-lg">
-                <span className="block md:hidden">📚 Ingénieur et professeur expérimenté. J'ai aidé des centaines d'élèves à transformer leur relation avec les maths.</span>
+                <span className="block md:hidden">📚 Prof + Ingénieur = centaines d'élèves aidés.</span>
                 <span className="hidden md:block">📚 Ingénieur et professeur expérimenté, j'ai enseigné dans des écoles prestigieuses et aidé des centaines d'élèves à transformer leur relation avec les mathématiques.</span>
               </p>
               
               <p className="text-base md:text-lg">
-                <span className="block md:hidden">💡 Ma mission : rendre les maths accessibles à tous !</span>
+                <span className="block md:hidden">💡 Mission : maths accessibles !</span>
                 <span className="hidden md:block">💡 Ma mission : rendre les mathématiques accessibles à tous, même à ceux qui pensent "ne jamais pouvoir y arriver" !</span>
               </p>
               
               <div className="bg-white rounded-lg p-4 md:p-6 shadow-sm mt-4 md:mt-6">
                 <h3 className="text-lg md:text-xl font-bold mb-2">💡 Pourquoi ça marche ?</h3>
                 <p className="text-base md:text-lg">
-                  <span className="block md:hidden">Les maths ont une logique. Avec la bonne approche, vous pouvez les maîtriser rapidement.</span>
+                  <span className="block md:hidden">Maths = logique. Bonne approche = maîtrise rapide.</span>
                   <span className="hidden md:block">Les maths ne sont pas une série d'exercices incompréhensibles : elles ont une logique. Avec la bonne approche, vous pouvez les maîtriser rapidement.</span>
                 </p>
               </div>
@@ -55,7 +55,7 @@ const AboutMe = () => {
                 <Link to="/methode" className="block md:inline-block">
                   <ButtonCTA 
                     variant="dark"
-                    className="w-full md:w-auto py-3 md:py-4"
+                    className="w-full md:w-auto py-4 md:py-4 text-lg font-bold"
                   >
                     <span className="block md:hidden">Comment ça marche</span>
                     <span className="hidden md:block">Découvrir comment ça marche</span>
@@ -68,7 +68,7 @@ const AboutMe = () => {
         
         <div className="mt-12 md:mt-16 bg-white rounded-lg p-6 md:p-8 shadow-md">
           <blockquote className="text-lg md:text-xl text-gray-600 italic text-center">
-            <span className="block md:hidden">"Les mathématiques possèdent la vérité et la beauté suprême."</span>
+            <span className="block md:hidden">"Les maths : vérité et beauté."</span>
             <span className="hidden md:block">"Les mathématiques possèdent non seulement la vérité, mais aussi la beauté suprême."</span>
             <footer className="mt-2 text-dark-blue font-medium not-italic text-base md:text-lg">— Bertrand Russell</footer>
           </blockquote>
