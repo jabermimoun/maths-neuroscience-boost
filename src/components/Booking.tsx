@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
@@ -75,7 +74,7 @@ const Booking = () => {
                 variant="gold" 
                 size="lg" 
                 icon={<Phone size={20} />}
-                className="animate-pulse-subtle w-full md:w-auto py-6 text-lg font-bold"
+                className="animate-pulse-subtle w-full md:w-auto py-6 text-lg"
               >
                 <span className="block md:hidden">Appel découverte</span>
                 <span className="hidden md:block">Réserver un appel découverte</span>
@@ -85,7 +84,10 @@ const Booking = () => {
           
           <div className="bg-dark-blue text-white p-6 md:p-8 rounded-lg shadow-lg">
             <div className="text-center mb-6 md:mb-8">
-              <h3 className="text-xl md:text-2xl font-bold mb-2">⏰ Vous hésitez ?</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-2">
+                <span className="block md:hidden">Vous hésitez ?</span>
+                <span className="hidden md:block">⏰ Vous hésitez ?</span>
+              </h3>
               <p className="text-white/80 text-sm md:text-base">
                 <span className="block md:hidden">
                   Chaque semaine = plus de retard !<br />
@@ -96,20 +98,19 @@ const Booking = () => {
                   Offrez à votre enfant les moyens de réussir dès aujourd'hui.
                 </span>
               </p>
-            </div>
-            
-            <div className="flex justify-center">
-              <Link to="/reserver" className="w-full md:w-auto">
-                <ButtonCTA 
-                  variant="gold" 
-                  size="lg"
-                  className="w-full md:w-auto py-6 text-lg font-bold"
-                >
-                  <span className="block md:hidden">Premier cours</span>
-                  <span className="hidden md:block">Réserver mon premier cours</span>
-                </ButtonCTA>
-              </Link>
-            </div>
+          </div>
+          
+          <div className="flex justify-center">
+            <Link to="/reserver" className="w-full md:w-auto">
+              <ButtonCTA 
+                variant="gold" 
+                size="lg"
+                className="w-full md:w-auto py-6 text-lg"
+              >
+                <span className="block md:hidden">Premier cours</span>
+                <span className="hidden md:block">Réserver mon premier cours</span>
+              </ButtonCTA>
+            </Link>
           </div>
         </div>
       </div>
