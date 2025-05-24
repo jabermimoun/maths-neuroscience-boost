@@ -17,98 +17,137 @@ const WhyDifferent = () => {
         />
         
         <div className="mb-12">
-          <div className="bg-light-blue/30 rounded-lg p-6 mb-8 shadow-sm">
-            <h3 className="text-xl font-semibold mb-4">Vous rencontrez ces difficultés ?</h3>
-            <ul className="space-y-3">
+          <div className="bg-light-blue/30 rounded-lg p-4 md:p-6 mb-8 shadow-sm">
+            <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">😰 Vous rencontrez ces difficultés ?</h3>
+            <ul className="space-y-2 md:space-y-3">
               <li className="flex items-start">
-                <span className="text-vibrant-orange mr-2">•</span>
-                <p>Vous comprenez en classe, mais les notes ne suivent pas ?</p>
+                <span className="text-vibrant-orange mr-2 text-lg">•</span>
+                <p className="text-sm md:text-base">Vous comprenez en classe, mais les notes ne suivent pas ?</p>
               </li>
               <li className="flex items-start">
-                <span className="text-vibrant-orange mr-2">•</span>
-                <p>Vous sentez du stress et un manque de confiance face aux exercices et aux examens ?</p>
+                <span className="text-vibrant-orange mr-2 text-lg">•</span>
+                <p className="text-sm md:text-base">
+                  <span className="block md:hidden">Stress et manque de confiance aux examens ?</span>
+                  <span className="hidden md:block">Vous sentez du stress et un manque de confiance face aux exercices et aux examens ?</span>
+                </p>
               </li>
               <li className="flex items-start">
-                <span className="text-vibrant-orange mr-2">•</span>
-                <p>Vous avez l'impression d'avoir "des lacunes trop grandes" pour vous en sortir ?</p>
+                <span className="text-vibrant-orange mr-2 text-lg">•</span>
+                <p className="text-sm md:text-base">
+                  <span className="block md:hidden">L'impression d'avoir "trop de lacunes" ?</span>
+                  <span className="hidden md:block">Vous avez l'impression d'avoir "des lacunes trop grandes" pour vous en sortir ?</span>
+                </p>
               </li>
             </ul>
           </div>
           
-          <div className="bg-pale-blue/50 rounded-lg p-6 shadow-sm border border-light-blue/50">
-            <p className="text-lg font-medium text-dark-blue flex items-center mb-2">
-              <span className="inline-block w-8 h-8 bg-vibrant-orange text-white rounded-full flex items-center justify-center mr-3">
+          <div className="bg-pale-blue/50 rounded-lg p-4 md:p-6 shadow-sm border border-light-blue/50">
+            <p className="text-base md:text-lg font-medium text-dark-blue flex items-center mb-2">
+              <span className="inline-block w-6 h-6 md:w-8 md:h-8 bg-vibrant-orange text-white rounded-full flex items-center justify-center mr-2 md:mr-3 text-sm md:text-base">
                 💡
               </span>
-              Bonne nouvelle : Il existe une solution efficace, et elle est basée sur la science !
+              <span className="block md:hidden">Il existe une solution efficace !</span>
+              <span className="hidden md:block">Bonne nouvelle : Il existe une solution efficace, et elle est basée sur la science !</span>
             </p>
           </div>
 
-          <div className="mt-8 bg-white rounded-lg p-6 shadow-md border border-gray-200">
-            <h3 className="text-xl font-bold text-dark-blue mb-4">🔬 Pourquoi notre méthode fonctionne ?</h3>
-            <p className="text-lg mb-4">💡 Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</p>
-            <ul className="space-y-3">
+          <div className="mt-8 bg-white rounded-lg p-4 md:p-6 shadow-md border border-gray-200">
+            <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-3 md:mb-4">🔬 Pourquoi notre méthode fonctionne ?</h3>
+            <p className="text-base md:text-lg mb-3 md:mb-4 font-medium">
+              <span className="block md:hidden">💡 Les neurosciences = résultats rapides !</span>
+              <span className="hidden md:block">💡 Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</span>
+            </p>
+            <ul className="space-y-2 md:space-y-3">
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
-                <p>Technique de la répétition espacée → Mémorisation longue durée garantie</p>
+                <p className="text-sm md:text-base">
+                  <span className="block md:hidden"><strong>Répétition espacée</strong> → Mémorisation longue durée</span>
+                  <span className="hidden md:block">Technique de la répétition espacée → Mémorisation longue durée garantie</span>
+                </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
-                <p>Apprentissage actif (active recall) → L'élève retient 80% mieux qu'avec une simple lecture</p>
+                <p className="text-sm md:text-base">
+                  <span className="block md:hidden"><strong>Apprentissage actif</strong> → 80% plus efficace</span>
+                  <span className="hidden md:block">Apprentissage actif (active recall) → L'élève retient 80% mieux qu'avec une simple lecture</span>
+                </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
-                <p>Méthodes anti-stress → Boost de la concentration et réduction de l'anxiété avant les examens</p>
+                <p className="text-sm md:text-base">
+                  <span className="block md:hidden"><strong>Méthodes anti-stress</strong> → Boost concentration</span>
+                  <span className="hidden md:block">Méthodes anti-stress → Boost de la concentration et réduction de l'anxiété avant les examens</span>
+                </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
-                <p>Optimisation du cerveau avec la gestion du sommeil et de la motivation</p>
+                <p className="text-sm md:text-base">
+                  <span className="block md:hidden"><strong>Optimisation cerveau</strong> → Sommeil + motivation</span>
+                  <span className="hidden md:block">Optimisation du cerveau avec la gestion du sommeil et de la motivation</span>
+                </p>
               </li>
             </ul>
-            <p className="text-lg font-bold text-dark-blue mt-4">📢 Votre enfant n'a pas besoin de travailler plus, mais de travailler PLUS INTELLIGEMMENT !</p>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg card-hover">
-            <div className="w-16 h-16 bg-pale-blue rounded-lg flex items-center justify-center mb-4">
-              <Brain size={32} className="text-dark-blue" />
-            </div>
-            <h3 className="text-xl font-bold text-dark-blue mb-3">Approche basée sur les neurosciences</h3>
-            <p className="text-gray-600">
-              Une double expertise : Professeur en école renommée et ingénieur, je combine pédagogie avancée et logique mathématique rigoureuse.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg card-hover">
-            <div className="w-16 h-16 bg-pale-blue rounded-lg flex items-center justify-center mb-4">
-              <Target size={32} className="text-dark-blue" />
-            </div>
-            <h3 className="text-xl font-bold text-dark-blue mb-3">Suivi personnalisé et stratégies efficaces</h3>
-            <p className="text-gray-600">
-              Une méthode unique : Basée sur les neurosciences et la psychologie cognitive, j'adapte mon approche à chaque élève pour une progression rapide et durable.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg card-hover">
-            <div className="w-16 h-16 bg-pale-blue rounded-lg flex items-center justify-center mb-4">
-              <Rocket size={32} className="text-dark-blue" />
-            </div>
-            <h3 className="text-xl font-bold text-dark-blue mb-3">Résultats rapides et concrets</h3>
-            <p className="text-gray-600">
-              Des résultats concrets : Mes élèves constatent une amélioration de 30 à 50% de leur moyenne après seulement 2 mois de suivi régulier.
+            <p className="text-base md:text-lg font-bold text-dark-blue mt-3 md:mt-4">
+              <span className="block md:hidden">📢 Travaillez PLUS INTELLIGEMMENT !</span>
+              <span className="hidden md:block">📢 Votre enfant n'a pas besoin de travailler plus, mais de travailler PLUS INTELLIGEMMENT !</span>
             </p>
           </div>
         </div>
         
-        <div className="mt-12 text-center">
-          <Link to="/reserver">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg card-hover">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-pale-blue rounded-lg flex items-center justify-center mb-3 md:mb-4">
+              <Brain size={24} className="text-dark-blue md:w-8 md:h-8" />
+            </div>
+            <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
+              <span className="block md:hidden">🧠 Neurosciences appliquées</span>
+              <span className="hidden md:block">Approche basée sur les neurosciences</span>
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              <span className="block md:hidden">Double expertise : Professeur + ingénieur pour une pédagogie avancée et logique rigoureuse.</span>
+              <span className="hidden md:block">Une double expertise : Professeur en école renommée et ingénieur, je combine pédagogie avancée et logique mathématique rigoureuse.</span>
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg card-hover">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-pale-blue rounded-lg flex items-center justify-center mb-3 md:mb-4">
+              <Target size={24} className="text-dark-blue md:w-8 md:h-8" />
+            </div>
+            <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
+              <span className="block md:hidden">🎯 Suivi 100% personnalisé</span>
+              <span className="hidden md:block">Suivi personnalisé et stratégies efficaces</span>
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              <span className="block md:hidden">Méthode unique basée sur les neurosciences. J'adapte mon approche à chaque élève.</span>
+              <span className="hidden md:block">Une méthode unique : Basée sur les neurosciences et la psychologie cognitive, j'adapte mon approche à chaque élève pour une progression rapide et durable.</span>
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border border-gray-100 transition-all duration-300 hover:shadow-lg card-hover">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-pale-blue rounded-lg flex items-center justify-center mb-3 md:mb-4">
+              <Rocket size={24} className="text-dark-blue md:w-8 md:h-8" />
+            </div>
+            <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
+              <span className="block md:hidden">🚀 Résultats garantis</span>
+              <span className="hidden md:block">Résultats rapides et concrets</span>
+            </h3>
+            <p className="text-sm md:text-base text-gray-600">
+              <span className="block md:hidden">+30 à 50% de moyenne après 2 mois de suivi régulier.</span>
+              <span className="hidden md:block">Des résultats concrets : Mes élèves constatent une amélioration de 30 à 50% de leur moyenne après seulement 2 mois de suivi régulier.</span>
+            </p>
+          </div>
+        </div>
+        
+        <div className="mt-8 md:mt-12 text-center">
+          <Link to="/reserver" className="block md:inline-block">
             <ButtonCTA 
               variant="gold" 
               size="lg" 
               icon={<Phone size={20} />}
+              className="w-full md:w-auto py-4 md:py-6"
             >
-              Je veux tester cette méthode !
+              <span className="block md:hidden">Tester cette méthode !</span>
+              <span className="hidden md:block">Je veux tester cette méthode !</span>
             </ButtonCTA>
           </Link>
         </div>
