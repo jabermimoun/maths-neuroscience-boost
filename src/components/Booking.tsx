@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
@@ -24,7 +25,7 @@ const Booking = () => {
                 <span className="text-white font-bold text-sm md:text-base">1</span>
               </div>
               <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
-                <span className="block md:hidden">📅 Créneau</span>
+                <span className="block md:hidden">Créneau</span>
                 <span className="hidden md:block">Choisissez votre créneau</span>
               </h3>
               <p className="text-sm md:text-base text-gray-600">
@@ -41,7 +42,7 @@ const Booking = () => {
                 <span className="text-white font-bold text-sm md:text-base">2</span>
               </div>
               <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
-                <span className="block md:hidden">📞 Diagnostic</span>
+                <span className="block md:hidden">Diagnostic</span>
                 <span className="hidden md:block">Appelez-moi pour un diagnostic rapide</span>
               </h3>
               <p className="text-sm md:text-base text-gray-600">
@@ -58,7 +59,7 @@ const Booking = () => {
                 <span className="text-white font-bold text-sm md:text-base">3</span>
               </div>
               <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-2 md:mb-3">
-                <span className="block md:hidden">🚀 Progressez !</span>
+                <span className="block md:hidden">Progressez !</span>
                 <span className="hidden md:block">Commencez à progresser immédiatement !</span>
               </h3>
               <p className="text-sm md:text-base text-gray-600">
@@ -86,7 +87,7 @@ const Booking = () => {
             <div className="text-center mb-6 md:mb-8">
               <h3 className="text-xl md:text-2xl font-bold mb-2">
                 <span className="block md:hidden">Vous hésitez ?</span>
-                <span className="hidden md:block">⏰ Vous hésitez ?</span>
+                <span className="hidden md:block">Vous hésitez ?</span>
               </h3>
               <p className="text-white/80 text-sm md:text-base">
                 <span className="block md:hidden">
@@ -98,19 +99,20 @@ const Booking = () => {
                   Offrez à votre enfant les moyens de réussir dès aujourd'hui.
                 </span>
               </p>
-          </div>
-          
-          <div className="flex justify-center">
-            <Link to="/reserver" className="w-full md:w-auto">
-              <ButtonCTA 
-                variant="gold" 
-                size="lg"
-                className="w-full md:w-auto py-6 text-lg"
-              >
-                <span className="block md:hidden">Premier cours</span>
-                <span className="hidden md:block">Réserver mon premier cours</span>
-              </ButtonCTA>
-            </Link>
+            </div>
+            
+            <div className="flex justify-center">
+              <Link to="/reserver" className="w-full md:w-auto">
+                <ButtonCTA 
+                  variant="gold" 
+                  size="lg"
+                  className="w-full md:w-auto py-6 text-lg"
+                >
+                  <span className="block md:hidden">Premier cours</span>
+                  <span className="hidden md:block">Réserver mon premier cours</span>
+                </ButtonCTA>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
