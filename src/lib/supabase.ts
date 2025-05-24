@@ -4,7 +4,15 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Vérification et valeurs par défaut temporaires
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('Variables d\'environnement Supabase manquantes. Utilisation de valeurs temporaires.');
+}
+
+export const supabase = createClient(
+  supabaseUrl || 'https://placeholder.supabase.co',
+  supabaseAnonKey || 'placeholder-key'
+)
 
 export type Database = {
   public: {

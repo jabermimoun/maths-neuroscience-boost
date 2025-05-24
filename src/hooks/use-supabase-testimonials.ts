@@ -10,8 +10,23 @@ export const useSupabaseTestimonials = () => {
   const [approvedReviews, setApprovedReviews] = useState<TestimonialType[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Vérifier si Supabase est configuré
+  const isSupabaseConfigured = () => {
+    const url = import.meta.env.VITE_SUPABASE_URL;
+    const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
+    return url && key && url !== 'https://placeholder.supabase.co' && key !== 'placeholder-key';
+  };
+
   const loadReviews = async () => {
     try {
+      if (!isSupabaseConfigured()) {
+        console.log('Supabase non configuré, utilisation de données vides');
+        setPendingReviews([]);
+        setApprovedReviews([]);
+        setLoading(false);
+        return;
+      }
+
       console.log('Loading testimonials from Supabase...');
       
       // Load pending reviews
@@ -45,11 +60,13 @@ export const useSupabaseTestimonials = () => {
       setApprovedReviews(approved || []);
     } catch (error) {
       console.error('Error loading reviews:', error);
-      toast({
-        title: "Erreur de chargement",
-        description: "Impossible de charger les avis depuis la base de données.",
-        variant: "destructive",
-      });
+      if (isSupabaseConfigured()) {
+        toast({
+          title: "Erreur de chargement",
+          description: "Impossible de charger les avis depuis la base de données.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -62,6 +79,15 @@ export const useSupabaseTestimonials = () => {
     rating: number;
   }) => {
     try {
+      if (!isSupabaseConfigured()) {
+        toast({
+          title: "Configuration requise",
+          description: "Veuillez configurer les variables d'environnement Supabase.",
+          variant: "destructive",
+        });
+        return;
+      }
+
       console.log('Submitting review to Supabase:', reviewData);
       
       const { data, error } = await supabase
@@ -166,25 +192,27 @@ export const useSupabaseTestimonials = () => {
   useEffect(() => {
     loadReviews();
 
-    // Set up real-time subscription
-    const subscription = supabase
-      .channel('testimonials_changes')
-      .on('postgres_changes', 
-        { 
-          event: '*', 
-          schema: 'public', 
-          table: 'testimonials' 
-        }, 
-        (payload) => {
-          console.log('Real-time update received:', payload);
-          loadReviews();
-        }
-      )
-      .subscribe();
+    if (isSupabaseConfigured()) {
+      // Set up real-time subscription only if Supabase is configured
+      const subscription = supabase
+        .channel('testimonials_changes')
+        .on('postgres_changes', 
+          { 
+            event: '*', 
+            schema: 'public', 
+            table: 'testimonials' 
+          }, 
+          (payload) => {
+            console.log('Real-time update received:', payload);
+            loadReviews();
+          }
+        )
+        .subscribe();
 
-    return () => {
-      subscription.unsubscribe();
-    };
+      return () => {
+        subscription.unsubscribe();
+      };
+    }
   }, []);
 
   return {

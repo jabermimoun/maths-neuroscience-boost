@@ -6,4 +6,6 @@ export interface TestimonialType {
   content: string;
   rating: number;
   status?: string;
+  created_at?: string;
+  updated_at?: string;
 }
