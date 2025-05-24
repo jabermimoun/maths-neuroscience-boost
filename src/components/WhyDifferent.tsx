@@ -58,12 +58,12 @@ const WhyDifferent = () => {
 
           <div className="mt-8 bg-white rounded-lg p-4 md:p-6 shadow-md border border-gray-200">
             <h3 className="text-lg md:text-xl font-bold text-dark-blue mb-3 md:mb-4">
-              <span className="block md:hidden">Pourquoi ça marche ?</span>
-              <span className="hidden md:block">Pourquoi ça marche ?</span>
+              <span className="block md:hidden">🔬 Pourquoi notre méthode fonctionne ?</span>
+              <span className="hidden md:block">🔬 Pourquoi notre méthode fonctionne ?</span>
             </h3>
             <p className="text-base md:text-lg mb-3 md:mb-4 font-medium">
-              <span className="block md:hidden">Neurosciences = résultats !</span>
-              <span className="hidden md:block">Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</span>
+              <span className="block md:hidden">💡 Neurosciences = résultats !</span>
+              <span className="hidden md:block">💡 Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</span>
             </p>
             <ul className="space-y-2 md:space-y-3">
               <li className="flex items-start">

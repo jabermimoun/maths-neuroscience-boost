@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
@@ -44,7 +45,7 @@ const AboutMe = () => {
               </p>
               
               <div className="bg-white rounded-lg p-4 md:p-6 shadow-sm mt-4 md:mt-6">
-                <h3 className="text-lg md:text-xl font-bold mb-2">💡 Pourquoi ça marche ?</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-2">Pourquoi ça marche ?</h3>
                 <p className="text-base md:text-lg">
                   <span className="block md:hidden">Maths = logique. Bonne approche = maîtrise rapide.</span>
                   <span className="hidden md:block">Les maths ne sont pas une série d'exercices incompréhensibles : elles ont une logique. Avec la bonne approche, vous pouvez les maîtriser rapidement.</span>
