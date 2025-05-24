@@ -63,7 +63,7 @@ const WhyDifferent = () => {
             </h3>
             <p className="text-base md:text-lg mb-3 md:mb-4 font-medium">
               <span className="block md:hidden">Neurosciences = résultats !</span>
-              <span className="hidden md:block">💡 Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</span>
+              <span className="hidden md:block">Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</span>
             </p>
             <ul className="space-y-2 md:space-y-3">
               <li className="flex items-start">
