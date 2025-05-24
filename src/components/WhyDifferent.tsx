@@ -62,41 +62,41 @@ const WhyDifferent = () => {
               <span className="hidden md:block">🔬 Pourquoi notre méthode fonctionne ?</span>
             </h3>
             <p className="text-base md:text-lg mb-3 md:mb-4 font-medium">
-              <span className="block md:hidden">💡 Neurosciences = résultats !</span>
+              <span className="block md:hidden">💡 Les neurosciences appliquées = LA clé pour des résultats rapides !</span>
               <span className="hidden md:block">💡 Les neurosciences appliquées à l'apprentissage, c'est LA clé pour des résultats rapides !</span>
             </p>
             <ul className="space-y-2 md:space-y-3">
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden">Répétition espacée → Mémoire longue</span>
+                  <span className="block md:hidden">Répétition espacée → Mémoire longue durée</span>
                   <span className="hidden md:block">Technique de la répétition espacée → Mémorisation longue durée garantie</span>
                 </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden">Apprentissage actif → +80% efficace</span>
+                  <span className="block md:hidden">Apprentissage actif → L'élève retient 80% mieux</span>
                   <span className="hidden md:block">Apprentissage actif (active recall) → L'élève retient 80% mieux qu'avec une simple lecture</span>
                 </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden">Anti-stress → +Concentration</span>
+                  <span className="block md:hidden">Méthodes anti-stress → Concentration boostée</span>
                   <span className="hidden md:block">Méthodes anti-stress → Boost de la concentration et réduction de l'anxiété avant les examens</span>
                 </p>
               </li>
               <li className="flex items-start">
                 <span className="text-vibrant-orange font-bold mr-2">✔️</span>
                 <p className="text-sm md:text-base">
-                  <span className="block md:hidden">Optimisation cerveau → Performance</span>
+                  <span className="block md:hidden">Optimisation cerveau → Performance décuplée</span>
                   <span className="hidden md:block">Optimisation du cerveau avec la gestion du sommeil et de la motivation</span>
                 </p>
               </li>
             </ul>
             <p className="text-base md:text-lg font-bold text-dark-blue mt-3 md:mt-4">
-              <span className="block md:hidden">Travaillez INTELLIGENT !</span>
+              <span className="block md:hidden">📢 Travaillez PLUS INTELLIGEMMENT !</span>
               <span className="hidden md:block">📢 Votre enfant n'a pas besoin de travailler plus, mais de travailler PLUS INTELLIGEMMENT !</span>
             </p>
           </div>
