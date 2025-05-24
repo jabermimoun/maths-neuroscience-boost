@@ -22,33 +22,27 @@ const WhyDifferent = () => {
             </h3>
             <ul className="space-y-3 md:space-y-4">
               <li className="flex items-start">
-                <span className="text-red-500 font-bold mr-3 text-lg">😰</span>
+                <span className="text-vibrant-orange font-bold mr-3 text-lg">•</span>
                 <p className="text-base md:text-lg">
-                  <span className="font-semibold">Notes qui ne suivent pas ?</span><br />
-                  <span className="text-gray-600 text-sm md:text-base">Votre enfant travaille dur mais ses résultats stagnent</span>
+                  Vous comprenez en classe, mais les notes ne suivent pas ?
                 </p>
               </li>
               <li className="flex items-start">
-                <span className="text-red-500 font-bold mr-3 text-lg">😨</span>
+                <span className="text-vibrant-orange font-bold mr-3 text-lg">•</span>
                 <p className="text-base md:text-lg">
-                  <span className="font-semibold">Stress aux examens ?</span><br />
-                  <span className="text-gray-600 text-sm md:text-base">L'angoisse paralyse et empêche la réflexion</span>
+                  Vous sentez du stress et un manque de confiance face aux exercices et aux examens ?
                 </p>
               </li>
               <li className="flex items-start">
-                <span className="text-red-500 font-bold mr-3 text-lg">📉</span>
+                <span className="text-vibrant-orange font-bold mr-3 text-lg">•</span>
                 <p className="text-base md:text-lg">
-                  <span className="font-semibold">Trop de lacunes ?</span><br />
-                  <span className="text-gray-600 text-sm md:text-base">Les bases manquantes créent un effet domino</span>
+                  Vous avez l'impression d'avoir "des lacunes trop grandes" pour vous en sortir ?
                 </p>
               </li>
             </ul>
             <div className="mt-6 md:mt-8 p-4 bg-vibrant-orange/10 rounded-lg border-l-4 border-vibrant-orange">
               <p className="text-base md:text-lg font-bold text-dark-blue">
-                💡 Solution efficace !
-              </p>
-              <p className="text-sm md:text-base text-gray-700 mt-1">
-                Une méthode qui transforme les blocages en réussites
+                💡 Bonne nouvelle : Il existe une solution efficace, et elle est basée sur la science !
               </p>
             </div>
           </div>
