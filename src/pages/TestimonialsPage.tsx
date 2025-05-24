@@ -9,7 +9,7 @@ import TestimonialCard from '@/components/testimonials/TestimonialCard';
 import AdminSection from '@/components/testimonials/AdminSection';
 import AdminPasswordPrompt from '@/components/testimonials/AdminPasswordPrompt';
 import { TestimonialType } from '@/types/testimonial';
-import { useTestimonials } from '@/hooks/use-testimonials';
+import { useSupabaseTestimonials } from '@/hooks/use-supabase-testimonials';
 
 const TestimonialsPage = () => {
   const navigate = useNavigate();
@@ -60,11 +60,11 @@ const TestimonialsPage = () => {
   const {
     pendingReviews,
     approvedReviews,
+    loading,
     approveReview,
     deleteReview,
-    refreshReviews,
-    loadReviews
-  } = useTestimonials(staticTestimonials);
+    refreshReviews
+  } = useSupabaseTestimonials();
   
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -87,7 +87,6 @@ const TestimonialsPage = () => {
       setShowAdminSection(true);
       setIsPasswordPromptOpen(false);
       setAdminPassword("");
-      loadReviews();
     } else {
       alert("Mot de passe incorrect");
     }
@@ -99,8 +98,26 @@ const TestimonialsPage = () => {
   
   const handleReviewSubmitted = () => {
     setShowAddReviewForm(false);
-    setTimeout(loadReviews, 500);
   };
+
+  const handleApproveReview = async (reviewId: number) => {
+    await approveReview(reviewId);
+  };
+
+  const handleDeleteReview = async (reviewId: number, isPending: boolean) => {
+    await deleteReview(reviewId);
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#F5F5F5] py-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#FFD700] mx-auto mb-4"></div>
+          <p className="text-lg text-gray-600">Chargement des témoignages...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] py-20">
@@ -148,14 +165,14 @@ const TestimonialsPage = () => {
             pendingReviews={pendingReviews}
             approvedReviews={approvedReviews}
             onGoToAdminPanel={goToAdminPanel}
-            onApproveReview={approveReview}
-            onDeleteReview={deleteReview}
+            onApproveReview={handleApproveReview}
+            onDeleteReview={handleDeleteReview}
           />
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[...staticTestimonials, ...approvedReviews].map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            <TestimonialCard key={`${testimonial.id}-${testimonial.name}`} testimonial={testimonial} />
           ))}
         </div>
         

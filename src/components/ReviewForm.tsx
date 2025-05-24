@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -6,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import ButtonCTA from './ButtonCTA';
 import emailjs from 'emailjs-com';
+import { useSupabaseTestimonials } from '@/hooks/use-supabase-testimonials';
 
 // EmailJS configuration
 const EMAILJS_SERVICE_ID = 'service_7nj26yk';
@@ -18,6 +20,7 @@ interface ReviewFormProps {
 
 const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
   const { toast } = useToast();
+  const { submitReview } = useSupabaseTestimonials();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -64,6 +67,14 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
     }
     
     try {
+      // Submit review to Supabase
+      await submitReview({
+        name: formData.name,
+        relation: formData.relation,
+        content: formData.review,
+        rating: rating
+      });
+
       // Get the current domain for the admin link
       const currentDomain = window.location.origin;
       const adminUrl = `${currentDomain}/admin-panel`;
@@ -87,61 +98,6 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onReviewSubmitted }) => {
         templateParams,
         EMAILJS_PUBLIC_KEY
       );
-      
-      // Store review in localStorage with improved debugging
-      console.log('Storing new review in localStorage');
-      
-      // Retrieve existing pending reviews
-      let pendingReviews = [];
-      try {
-        const storedReviews = localStorage.getItem('pendingReviews');
-        console.log('Raw pendingReviews from localStorage:', storedReviews);
-        
-        if (storedReviews) {
-          pendingReviews = JSON.parse(storedReviews);
-          console.log('Parsed existing pending reviews:', pendingReviews);
-        } else {
-          console.log('No existing pending reviews found, initializing empty array');
-          pendingReviews = [];
-        }
-      } catch (error) {
-        console.error('Error parsing pendingReviews from localStorage:', error);
-        pendingReviews = [];
-      }
-      
-      // Ensure pendingReviews is an array
-      if (!Array.isArray(pendingReviews)) {
-        console.warn('pendingReviews is not an array, resetting to empty array');
-        pendingReviews = [];
-      }
-      
-      // Create new review object
-      const newReview = {
-        id: Date.now(),
-        name: formData.name,
-        relation: formData.relation,
-        content: formData.review,
-        rating: rating,
-        date: new Date().toISOString(),
-        status: 'pending'
-      };
-      
-      console.log('New review object:', newReview);
-      
-      // Add new review to the pending reviews array
-      pendingReviews.push(newReview);
-      
-      // Store updated pending reviews back to localStorage
-      const pendingReviewsJSON = JSON.stringify(pendingReviews);
-      localStorage.setItem('pendingReviews', pendingReviewsJSON);
-      console.log('Updated pendingReviews in localStorage:', pendingReviews);
-      console.log('JSON string stored in localStorage:', pendingReviewsJSON);
-      
-      // Trigger a storage event to notify other components
-      window.dispatchEvent(new StorageEvent('storage', {
-        key: 'pendingReviews',
-        newValue: pendingReviewsJSON
-      }));
       
       // Success notification
       toast({

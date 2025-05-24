@@ -1,6 +1,7 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Star } from 'lucide-react';
+import { useSupabaseTestimonials } from '@/hooks/use-supabase-testimonials';
 
 interface Testimonial {
   id: number;
@@ -14,93 +15,44 @@ interface TestimonialsListProps {
   staticTestimonials: Testimonial[];
 }
 
-// Get approved reviews from localStorage with better error handling
-const getApprovedReviews = (): Testimonial[] => {
-  try {
-    console.log('TestimonialsList: Getting approved reviews from localStorage');
-    const storedData = localStorage.getItem('approvedReviews');
-    
-    console.log('Raw approvedReviews data:', storedData);
-    
-    if (!storedData) {
-      console.log('No approved reviews found in localStorage');
-      return [];
-    }
-    
-    try {
-      const approvedReviews = JSON.parse(storedData);
-      console.log('Found approved reviews:', approvedReviews);
-      
-      // Ensure the result is an array
-      if (!Array.isArray(approvedReviews)) {
-        console.warn('approvedReviews from localStorage is not an array, returning empty array');
-        return [];
-      }
-      
-      return approvedReviews;
-    } catch (parseError) {
-      console.error('Error parsing approvedReviews from localStorage:', parseError);
-      return [];
-    }
-  } catch (error) {
-    console.error('Error loading approved reviews:', error);
-    return [];
-  }
-};
-
 const TestimonialsList: React.FC<TestimonialsListProps> = ({ staticTestimonials }) => {
-  const [allTestimonials, setAllTestimonials] = useState<Testimonial[]>(staticTestimonials);
+  const { approvedReviews, loading } = useSupabaseTestimonials();
   
-  // Function to load testimonials
-  const loadTestimonials = () => {
-    try {
-      // Combine static testimonials with approved user testimonials
-      const approvedReviews = getApprovedReviews();
-      const combined = [...staticTestimonials, ...approvedReviews];
-      
-      console.log('Combined testimonials:', combined);
-      setAllTestimonials(combined);
-    } catch (error) {
-      console.error('Error combining testimonials:', error);
-      setAllTestimonials(staticTestimonials); // Fallback to static testimonials
-    }
-  };
+  // Combine static testimonials with approved Supabase reviews
+  const allTestimonials = [...staticTestimonials, ...approvedReviews];
   
-  // Function to handle storage events
-  const handleStorageChange = (e: StorageEvent) => {
-    console.log('Storage change detected:', e.key);
-    if (e.key === 'approvedReviews' || e.key === 'pendingReviews') {
-      console.log('Reloading testimonials due to storage change');
-      loadTestimonials();
-    }
-  };
-  
-  useEffect(() => {
-    // Initial load of testimonials
-    loadTestimonials();
-    
-    // Set up event listener for storage changes
-    window.addEventListener('storage', handleStorageChange);
-    
-    // Also listen for custom events
-    const handleCustomEvent = () => {
-      console.log('Custom reviewsUpdated event detected');
-      loadTestimonials();
-    };
-    
-    window.addEventListener('reviewsUpdated', handleCustomEvent);
-    
-    // Clean up
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('reviewsUpdated', handleCustomEvent);
-    };
-  }, [staticTestimonials]);
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="bg-white rounded-lg p-6 shadow-md animate-pulse">
+            <div className="flex mb-4">
+              {Array.from({ length: 5 }).map((_, j) => (
+                <div key={j} className="w-5 h-5 bg-gray-200 rounded mr-1"></div>
+              ))}
+            </div>
+            <div className="space-y-2 mb-6">
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+            </div>
+            <div className="flex items-center">
+              <div className="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
+              <div>
+                <div className="h-4 bg-gray-200 rounded w-24 mb-2"></div>
+                <div className="h-3 bg-gray-200 rounded w-32"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {allTestimonials.map((testimonial) => (
-        <div key={testimonial.id} className="bg-white rounded-lg p-6 shadow-md card-hover">
+        <div key={`${testimonial.id}-${testimonial.name}`} className="bg-white rounded-lg p-6 shadow-md card-hover">
           <div className="flex mb-4">
             {Array.from({ length: testimonial.rating }).map((_, i) => (
               <Star key={i} size={20} className="text-vibrant-orange fill-vibrant-orange" />
