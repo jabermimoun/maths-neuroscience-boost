@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
@@ -35,20 +33,17 @@ const AboutMe = () => {
             
             <div className="space-y-4 md:space-y-6 text-dark-blue/90">
               <p className="text-base md:text-lg">
-                <span className="block md:hidden">📚 Prof + Ingénieur = centaines d'élèves aidés.</span>
-                <span className="hidden md:block">📚 Ingénieur et professeur expérimenté, j'ai enseigné dans des écoles prestigieuses et aidé des centaines d'élèves à transformer leur relation avec les mathématiques.</span>
+                📚 Ingénieur et professeur expérimenté, j'ai enseigné dans des écoles prestigieuses et aidé des centaines d'élèves à transformer leur relation avec les mathématiques.
               </p>
               
               <p className="text-base md:text-lg">
-                <span className="block md:hidden">💡 Mission : maths accessibles !</span>
-                <span className="hidden md:block">💡 Ma mission : rendre les mathématiques accessibles à tous, même à ceux qui pensent "ne jamais pouvoir y arriver" !</span>
+                💡 Ma mission : rendre les mathématiques accessibles à tous, même à ceux qui pensent "ne jamais pouvoir y arriver" !
               </p>
               
               <div className="bg-white rounded-lg p-4 md:p-6 shadow-sm mt-4 md:mt-6">
                 <h3 className="text-lg md:text-xl font-bold mb-2">Pourquoi ça marche ?</h3>
                 <p className="text-base md:text-lg">
-                  <span className="block md:hidden">Maths = logique. Bonne approche = maîtrise rapide.</span>
-                  <span className="hidden md:block">Les maths ne sont pas une série d'exercices incompréhensibles : elles ont une logique. Avec la bonne approche, vous pouvez les maîtriser rapidement.</span>
+                  Les maths ne sont pas une série d'exercices incompréhensibles : elles ont une logique. Avec la bonne approche, vous pouvez les maîtriser rapidement.
                 </p>
               </div>
               
